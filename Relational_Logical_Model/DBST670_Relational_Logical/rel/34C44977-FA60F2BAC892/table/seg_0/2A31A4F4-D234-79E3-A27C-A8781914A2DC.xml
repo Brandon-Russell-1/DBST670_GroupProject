@@ -1,0 +1,199 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2A31A4F4-D234-79E3-A27C-A8781914A2DC" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="EMPLOYEE">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>EMPLOYEE</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:15 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SALES_EMP_SSN" id="E0B5DC12-6B50-966E-F161-C1EAEC2EE55B">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>SALES_EMP_SSN</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STOREID" id="339BF4F2-A824-EA78-A0F4-73B872733AA8">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>STOREID</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E6817B1A-F5D0-D790-160C-0974004AF2A5" referredColumn="B490E4B9-A642-293D-4E67-9D12C78F51E9"/>
+</associations>
+</Column>
+<Column name="FIRSTNAME" id="256E37E4-271A-C3E0-8CBB-56A825CF4CEF">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>FIRSTNAME</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 BYTE</dataTypeSize>
+<ownDataTypeParameters>15 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LASTNAME" id="0D287148-81AB-AE6A-661B-89FC46DDF4DE">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>LASTNAME</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 BYTE</dataTypeSize>
+<ownDataTypeParameters>15 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADDRESS" id="2A6B8B42-B9F0-E043-27B4-FFDCD083F86B">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>ADDRESS</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35 BYTE</dataTypeSize>
+<ownDataTypeParameters>35 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PHONENO" id="089614DC-2105-7CA1-E6DB-A93AEBEC48BE">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>PHONENO</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>15 BYTE</dataTypeSize>
+<ownDataTypeParameters>15 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZIPCODE" id="B192F378-0257-8E4E-BA4C-FF932EB2AACE">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>ZIPCODE</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3549FF89-7022-B7F5-2AE2-9B286E3C84E6" referredColumn="DA922DD0-7325-B69E-A621-D779BED5A15A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="75B0D775-7A53-0791-FA8F-542BE144F5A1" name="PK_SALES_EMP_SSN">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PK_SALES_EMP_SSN</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0B5DC12-6B50-966E-F161-C1EAEC2EE55B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DBD4828E-3F3D-BC88-A9D1-971BDFE65A88" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="FK_EMP_STOREID">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>FK_EMP_STOREID</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="339BF4F2-A824-EA78-A0F4-73B872733AA8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EC21511A-68E4-6E44-5E03-2724AD0A0D76" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="FK_EMP_ZIP">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>FK_EMP_ZIP</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B192F378-0257-8E4E-BA4C-FF932EB2AACE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3FA0DE99-FC6C-5960-0262-BB9B3A617DEB" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="PK_SALES_EMP_SSN">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PK_SALES_EMP_SSN</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0B5DC12-6B50-966E-F161-C1EAEC2EE55B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C4C21845-C01B-DCAD-FD20-02E8624E15DA" name="FK_EMP_STOREID">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="339BF4F2-A824-EA78-A0F4-73B872733AA8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="77C9AFBE-E625-A2A0-6160-BD34F4C526C1" name="FK_EMP_ZIP">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B192F378-0257-8E4E-BA4C-FF932EB2AACE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="71260E48-15ED-59AE-A442-AC60622A948D" containerWithKeyObject="AF3BDBD5-7C6A-79A8-DB98-0713E82270D9" localFKIndex="633E13E2-3518-8F7F-C56F-CCF7C47039CB" name="FK_STORE_ZIP">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>FK_STORE_ZIP</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<referredTableLongName>DATADESIGNLEADUSER.ZIP</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>04F3442F-477D-6BE5-CDC9-EE5788A93C1F</referredTableID>
+<keyObject>0A9E0B43-BD51-62D8-AF0C-9EBD0A6019F3</keyObject>
+<referredKeyID>0A9E0B43-BD51-62D8-AF0C-9EBD0A6019F3</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>ZIPCODE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

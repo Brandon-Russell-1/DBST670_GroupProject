@@ -1,0 +1,696 @@
+
+Error starting at line : 6 in command -
+drop table PAYMENT
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 7 in command -
+drop table ORDER_ITEM
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 8 in command -
+drop table ORDERS
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 9 in command -
+drop table PRODUCT
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 10 in command -
+drop table CUSTOMER
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 11 in command -
+drop table ZIP
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Table ZIP created.
+
+
+Table CUSTOMER created.
+
+
+Table PRODUCT created.
+
+
+Table ORDERS created.
+
+
+Table ORDER_ITEM created.
+
+
+Table PAYMENT created.
+
+
+Index FK_ZIP created.
+
+
+Index FK_CUSTOMERID created.
+
+
+Index FK_ORDER_ID1 created.
+
+
+Index FK_PRODUCT_ID created.
+
+
+Index FK_ORDER_ID2 created.
+
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_SESSION_EVOLV TABLE                   VALID  
+LOGMNR_SESSION_EVOLV INDEX                   VALID  
+LOGMNR_EVOLVE_SEQ$   SEQUENCE                VALID  
+LOGMNR_SEQ$          SEQUENCE                VALID  
+LOGMNR_DIDS$         SEQUENCE                VALID  
+LOGMNR_UIDS$         SEQUENCE                VALID  
+LOGMNR_GLOBAL$       TABLE                   VALID  
+LOGMNR_GT_TAB_INCLUD TABLE                   VALID  
+LOGMNR_GT_USER_INCLU TABLE                   VALID  
+LOGMNR_GT_XID_INCLUD TABLE                   VALID  
+LOGMNR_PDB_INFO$     TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_PDB_INFO$_PK  INDEX                   VALID  
+LOGMNR_DID$          TABLE                   VALID  
+LOGMNR_DID$_PK       INDEX                   VALID  
+LOGMNR_UID$          TABLE                   VALID  
+LOGMNR_UID$_PK       INDEX                   VALID  
+LOGMNRGGC_GTLO       TABLE                   VALID  
+LOGMNRGGC_GTLO_PK    INDEX                   VALID  
+LOGMNRGGC_I2GTLO     INDEX                   VALID  
+LOGMNRGGC_I3GTLO     INDEX                   VALID  
+LOGMNRGGC_GTCS       TABLE                   VALID  
+LOGMNRGGC_GTCS_PK    INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNRGGC_I2GTCS     INDEX                   VALID  
+LOGMNRC_DBNAME_UID_M TABLE                   VALID  
+LOGMNRC_DBNAME_UID_M INDEX                   VALID  
+LOGMNR_LOG$          TABLE                   VALID  
+LOGMNR_LOG$_PK       INDEX                   VALID  
+LOGMNR_LOG$_FLAGS    INDEX                   VALID  
+LOGMNR_LOG$_FIRST_CH INDEX                   VALID  
+LOGMNR_LOG$_RECID    INDEX                   VALID  
+LOGMNR_PROCESSED_LOG TABLE                   VALID  
+LOGMNR_PROCESSED_LOG INDEX                   VALID  
+LOGMNR_SPILL$        TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_SPILL$_PK     INDEX                   VALID  
+SYS_IL0000001435C000 INDEX                   VALID  
+SYS_LOB0000001435C00 LOB                     VALID  
+LOGMNR_AGE_SPILL$    TABLE                   VALID  
+LOGMNR_AGE_SPILL$_PK INDEX                   VALID  
+SYS_IL0000001439C000 INDEX                   VALID  
+SYS_LOB0000001439C00 LOB                     VALID  
+LOGMNR_RESTART_CKPT_ TABLE                   VALID  
+LOGMNR_RESTART_CKPT_ INDEX                   VALID  
+SYS_IL0000001443C000 INDEX                   VALID  
+SYS_LOB0000001443C00 LOB                     VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_ERROR$        TABLE                   VALID  
+LOGMNR_RESTART_CKPT$ TABLE                   VALID  
+LOGMNR_RESTART_CKPT$ INDEX                   VALID  
+SYS_IL0000001448C000 INDEX                   VALID  
+SYS_LOB0000001448C00 LOB                     VALID  
+SYS_IL0000001448C000 INDEX                   VALID  
+SYS_LOB0000001448C00 LOB                     VALID  
+LOGMNR_INTEGRATED_SP TABLE                   VALID  
+LOGMNR_INTEG_SPILL$_ INDEX                   VALID  
+SYS_IL0000001454C000 INDEX                   VALID  
+SYS_LOB0000001454C00 LOB                     VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_FILTER$       TABLE                   VALID  
+LOGMNR_SESSION_ACTIO TABLE                   VALID  
+LOGMNR_SESSION_ACTIO INDEX                   VALID  
+LOGMNR_PARAMETER$    TABLE                   VALID  
+LOGMNR_PARAMETER_IND INDEX                   VALID  
+LOGMNR_SESSION$      TABLE                   VALID  
+LOGMNR_SESSION_PK    INDEX                   VALID  
+LOGMNR_SESSION_UK1   INDEX                   VALID  
+LOGMNRT_MDDL$        TABLE                   VALID  
+LOGMNRT_MDDL$_PK     INDEX                   VALID  
+REDO_DB              TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+REDO_LOG             TABLE                   VALID  
+REDO_DB_IDX          INDEX                   VALID  
+REDO_LOG_IDX         INDEX                   VALID  
+ROLLING$CONNECTIONS  TABLE                   VALID  
+ROLLING$DATABASES    TABLE                   VALID  
+ROLLING$DIRECTIVES   TABLE                   VALID  
+ROLLING_EVENT_SEQ$   SEQUENCE                VALID  
+ROLLING$EVENTS       TABLE                   VALID  
+ROLLING$PARAMETERS   TABLE                   VALID  
+ROLLING$PLAN         TABLE                   VALID  
+ROLLING$STATISTICS   TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+ROLLING$STATUS       TABLE                   VALID  
+SYSCATALOG           SYNONYM                 VALID  
+CATALOG              SYNONYM                 VALID  
+TAB                  SYNONYM                 VALID  
+COL                  SYNONYM                 VALID  
+TABQUOTAS            SYNONYM                 VALID  
+SYSFILES             SYNONYM                 VALID  
+PUBLICSYN            SYNONYM                 VALID  
+MVIEW$_ADV_WORKLOAD  TABLE                   VALID  
+MVIEW$_ADV_WORKLOAD_ INDEX                   VALID  
+MVIEW$_ADV_WORKLOAD_ INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+MVIEW$_ADV_BASETABLE TABLE                   VALID  
+MVIEW$_ADV_BASETABLE INDEX                   VALID  
+MVIEW$_ADV_SQLDEPEND TABLE                   VALID  
+MVIEW$_ADV_SQLDEPEND INDEX                   VALID  
+MVIEW$_ADV_PRETTY    TABLE                   VALID  
+MVIEW$_ADV_PRETTY_ID INDEX                   VALID  
+MVIEW$_ADV_TEMP      TABLE                   VALID  
+MVIEW$_ADV_TEMP_IDX_ INDEX                   VALID  
+MVIEW$_ADV_FILTER    TABLE                   VALID  
+MVIEW$_ADV_FILTER_PK INDEX                   VALID  
+MVIEW$_ADV_LOG       TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+MVIEW$_ADV_LOG_PK    INDEX                   VALID  
+MVIEW$_ADV_FILTERINS TABLE                   VALID  
+MVIEW$_ADV_LEVEL     TABLE                   VALID  
+MVIEW$_ADV_LEVEL_PK  INDEX                   VALID  
+MVIEW$_ADV_ROLLUP    TABLE                   VALID  
+MVIEW$_ADV_ROLLUP_PK INDEX                   VALID  
+MVIEW$_ADV_AJG       TABLE                   VALID  
+MVIEW$_ADV_AJG_PK    INDEX                   VALID  
+MVIEW$_ADV_FJG       TABLE                   VALID  
+MVIEW$_ADV_FJG_PK    INDEX                   VALID  
+MVIEW$_ADV_GC        TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+MVIEW$_ADV_GC_PK     INDEX                   VALID  
+MVIEW$_ADV_CLIQUE    TABLE                   VALID  
+MVIEW$_ADV_CLIQUE_PK INDEX                   VALID  
+MVIEW$_ADV_ELIGIBLE  TABLE                   VALID  
+MVIEW$_ADV_ELIGIBLE_ INDEX                   VALID  
+MVIEW$_ADV_OUTPUT    TABLE                   VALID  
+MVIEW$_ADV_OUTPUT_PK INDEX                   VALID  
+MVIEW$_ADV_EXCEPTION TABLE                   VALID  
+MVIEW$_ADV_PARAMETER TABLE                   VALID  
+MVIEW$_ADV_PARAMETER INDEX                   VALID  
+MVIEW$_ADV_INFO      TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+MVIEW$_ADV_INFO_PK   INDEX                   VALID  
+MVIEW$_ADV_JOURNAL   TABLE                   VALID  
+MVIEW$_ADV_JOURNAL_P INDEX                   VALID  
+MVIEW$_ADV_PLAN      TABLE                   VALID  
+MVIEW$_ADVSEQ_GENERI SEQUENCE                VALID  
+MVIEW$_ADVSEQ_ID     SEQUENCE                VALID  
+MVIEW_WORKLOAD       VIEW                    VALID  
+MVIEW_FILTER         VIEW                    VALID  
+MVIEW_LOG            VIEW                    VALID  
+MVIEW_FILTERINSTANCE VIEW                    VALID  
+MVIEW_RECOMMENDATION VIEW                    VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+MVIEW_EVALUATIONS    VIEW                    VALID  
+MVIEW_EXCEPTIONS     VIEW                    VALID  
+AQ$_QUEUE_TABLES     TABLE                   VALID  
+AQ$_QUEUE_TABLES_PRI INDEX                   VALID  
+I1_QUEUE_TABLES      INDEX                   VALID  
+AQ$_QUEUES           TABLE                   VALID  
+AQ$_QUEUES_PRIMARY   INDEX                   VALID  
+SYS_IL0000008538C000 INDEX                   VALID  
+SYS_LOB0000008538C00 LOB                     VALID  
+AQ$_QUEUES_CHECK     INDEX                   VALID  
+I1_QUEUES            INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+AQ$_SCHEDULES        TABLE                   VALID  
+AQ$_SCHEDULES_PRIMAR INDEX                   VALID  
+AQ$_SCHEDULES_CHECK  INDEX                   VALID  
+AQ$_INTERNET_AGENTS  TABLE                   VALID  
+SYS_C002356          INDEX                   VALID  
+AQ$_INTERNET_AGENT_P TABLE                   VALID  
+UNQ_PAIRS            INDEX                   VALID  
+OL$                  TABLE                   VALID  
+OL$HINTS             TABLE                   VALID  
+SYS_IL0000009038C000 INDEX                   VALID  
+SYS_LOB0000009038C00 LOB                     VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+OL$NODES             TABLE                   VALID  
+OL$NAME              INDEX                   VALID  
+OL$SIGNATURE         INDEX                   VALID  
+OL$HNT_NUM           INDEX                   VALID  
+LOGMNR_DICTSTATE$    TABLE PARTITION         VALID  
+LOGMNR_DICTSTATE$    TABLE                   VALID  
+LOGMNRC_GTLO         TABLE PARTITION         VALID  
+LOGMNRC_GTLO         TABLE                   VALID  
+LOGMNRC_GTLO_PK      INDEX PARTITION         VALID  
+LOGMNRC_GTLO_PK      INDEX                   VALID  
+LOGMNRC_I2GTLO       INDEX PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNRC_I2GTLO       INDEX                   VALID  
+LOGMNRC_I3GTLO       INDEX PARTITION         VALID  
+LOGMNRC_I3GTLO       INDEX                   VALID  
+LOGMNRC_GTCS         TABLE PARTITION         VALID  
+LOGMNRC_GTCS         TABLE                   VALID  
+LOGMNRC_GTCS_PK      INDEX PARTITION         VALID  
+LOGMNRC_GTCS_PK      INDEX                   VALID  
+LOGMNRC_I2GTCS       INDEX PARTITION         VALID  
+LOGMNRC_I2GTCS       INDEX                   VALID  
+LOGMNRC_SEQ_GG       TABLE PARTITION         VALID  
+LOGMNRC_SEQ_GG       TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNRC_SEQ_GG_PK    INDEX PARTITION         VALID  
+LOGMNRC_SEQ_GG_PK    INDEX                   VALID  
+LOGMNRC_I2SEQGG      INDEX PARTITION         VALID  
+LOGMNRC_I2SEQGG      INDEX                   VALID  
+LOGMNRC_CON_GG       TABLE PARTITION         VALID  
+LOGMNRC_CON_GG       TABLE                   VALID  
+LOGMNRC_CON_GG_PK    INDEX PARTITION         VALID  
+LOGMNRC_CON_GG_PK    INDEX                   VALID  
+LOGMNRC_I1CONGG      INDEX PARTITION         VALID  
+LOGMNRC_I1CONGG      INDEX                   VALID  
+LOGMNRC_I2CONGG      INDEX PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNRC_I2CONGG      INDEX                   VALID  
+LOGMNRC_CONCOL_GG    TABLE PARTITION         VALID  
+LOGMNRC_CONCOL_GG    TABLE                   VALID  
+LOGMNRC_CONCOL_GG_PK INDEX PARTITION         VALID  
+LOGMNRC_CONCOL_GG_PK INDEX                   VALID  
+LOGMNRC_IND_GG       TABLE PARTITION         VALID  
+LOGMNRC_IND_GG       TABLE                   VALID  
+LOGMNRC_IND_GG_PK    INDEX PARTITION         VALID  
+LOGMNRC_IND_GG_PK    INDEX                   VALID  
+LOGMNRC_I1INDGG      INDEX PARTITION         VALID  
+LOGMNRC_I1INDGG      INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNRC_I2INDGG      INDEX PARTITION         VALID  
+LOGMNRC_I2INDGG      INDEX                   VALID  
+LOGMNRC_INDCOL_GG    TABLE PARTITION         VALID  
+LOGMNRC_INDCOL_GG    TABLE                   VALID  
+LOGMNRC_INDCOL_GG_PK INDEX PARTITION         VALID  
+LOGMNRC_INDCOL_GG_PK INDEX                   VALID  
+LOGMNRC_SHARD_TS     TABLE PARTITION         VALID  
+LOGMNRC_SHARD_TS     TABLE                   VALID  
+LOGMNRC_SHARD_TS_PK  INDEX PARTITION         VALID  
+LOGMNRC_SHARD_TS_PK  INDEX                   VALID  
+LOGMNRC_I1SHARD_TS   INDEX PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNRC_I1SHARD_TS   INDEX                   VALID  
+LOGMNRC_TSPART       TABLE PARTITION         VALID  
+LOGMNRC_TSPART       TABLE                   VALID  
+LOGMNRC_TSPART_PK    INDEX PARTITION         VALID  
+LOGMNRC_TSPART_PK    INDEX                   VALID  
+LOGMNRC_I1TSPART     INDEX PARTITION         VALID  
+LOGMNRC_I1TSPART     INDEX                   VALID  
+LOGMNRC_TS           TABLE PARTITION         VALID  
+LOGMNRC_TS           TABLE                   VALID  
+LOGMNRC_TS_PK        INDEX PARTITION         VALID  
+LOGMNRC_TS_PK        INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNRC_I1TS         INDEX PARTITION         VALID  
+LOGMNRC_I1TS         INDEX                   VALID  
+LOGMNRC_GSII         TABLE PARTITION         VALID  
+LOGMNRC_GSII         TABLE                   VALID  
+LOGMNRC_GSII_PK      INDEX PARTITION         VALID  
+LOGMNRC_GSII_PK      INDEX                   VALID  
+LOGMNRC_GSBA         TABLE PARTITION         VALID  
+LOGMNRC_GSBA         TABLE                   VALID  
+LOGMNRC_GSBA_PK      INDEX PARTITION         VALID  
+LOGMNRC_GSBA_PK      INDEX                   VALID  
+LOGMNR_SEED$         TABLE PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_SEED$         TABLE                   VALID  
+LOGMNR_I1SEED$       INDEX PARTITION         VALID  
+LOGMNR_I1SEED$       INDEX                   VALID  
+LOGMNR_I2SEED$       INDEX PARTITION         VALID  
+LOGMNR_I2SEED$       INDEX                   VALID  
+LOGMNR_DICTIONARY$   TABLE PARTITION         VALID  
+LOGMNR_DICTIONARY$   TABLE                   VALID  
+LOGMNR_I1DICTIONARY$ INDEX PARTITION         VALID  
+LOGMNR_I1DICTIONARY$ INDEX                   VALID  
+LOGMNR_OBJ$          TABLE PARTITION         VALID  
+LOGMNR_OBJ$          TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I1OBJ$        INDEX PARTITION         VALID  
+LOGMNR_I1OBJ$        INDEX                   VALID  
+LOGMNR_I2OBJ$        INDEX PARTITION         VALID  
+LOGMNR_I2OBJ$        INDEX                   VALID  
+LOGMNR_I3OBJ$        INDEX PARTITION         VALID  
+LOGMNR_I3OBJ$        INDEX                   VALID  
+LOGMNR_TAB$          TABLE PARTITION         VALID  
+LOGMNR_TAB$          TABLE                   VALID  
+LOGMNR_I1TAB$        INDEX PARTITION         VALID  
+LOGMNR_I1TAB$        INDEX                   VALID  
+LOGMNR_I2TAB$        INDEX PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I2TAB$        INDEX                   VALID  
+LOGMNR_COL$          TABLE PARTITION         VALID  
+LOGMNR_COL$          TABLE                   VALID  
+LOGMNR_I1COL$        INDEX PARTITION         VALID  
+LOGMNR_I1COL$        INDEX                   VALID  
+LOGMNR_I2COL$        INDEX PARTITION         VALID  
+LOGMNR_I2COL$        INDEX                   VALID  
+LOGMNR_I3COL$        INDEX PARTITION         VALID  
+LOGMNR_I3COL$        INDEX                   VALID  
+LOGMNR_ATTRCOL$      TABLE PARTITION         VALID  
+LOGMNR_ATTRCOL$      TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I1ATTRCOL$    INDEX PARTITION         VALID  
+LOGMNR_I1ATTRCOL$    INDEX                   VALID  
+LOGMNR_TS$           TABLE PARTITION         VALID  
+LOGMNR_TS$           TABLE                   VALID  
+LOGMNR_I1TS$         INDEX PARTITION         VALID  
+LOGMNR_I1TS$         INDEX                   VALID  
+LOGMNR_IND$          TABLE PARTITION         VALID  
+LOGMNR_IND$          TABLE                   VALID  
+LOGMNR_I1IND$        INDEX PARTITION         VALID  
+LOGMNR_I1IND$        INDEX                   VALID  
+LOGMNR_I2IND$        INDEX PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I2IND$        INDEX                   VALID  
+LOGMNR_USER$         TABLE PARTITION         VALID  
+LOGMNR_USER$         TABLE                   VALID  
+LOGMNR_I1USER$       INDEX PARTITION         VALID  
+LOGMNR_I1USER$       INDEX                   VALID  
+LOGMNR_I2USER$       INDEX PARTITION         VALID  
+LOGMNR_I2USER$       INDEX                   VALID  
+LOGMNR_TABPART$      TABLE PARTITION         VALID  
+LOGMNR_TABPART$      TABLE                   VALID  
+LOGMNR_I1TABPART$    INDEX PARTITION         VALID  
+LOGMNR_I1TABPART$    INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I2TABPART$    INDEX PARTITION         VALID  
+LOGMNR_I2TABPART$    INDEX                   VALID  
+LOGMNR_TABSUBPART$   TABLE PARTITION         VALID  
+LOGMNR_TABSUBPART$   TABLE                   VALID  
+LOGMNR_I1TABSUBPART$ INDEX PARTITION         VALID  
+LOGMNR_I1TABSUBPART$ INDEX                   VALID  
+LOGMNR_I2TABSUBPART$ INDEX PARTITION         VALID  
+LOGMNR_I2TABSUBPART$ INDEX                   VALID  
+LOGMNR_TABCOMPART$   TABLE PARTITION         VALID  
+LOGMNR_TABCOMPART$   TABLE                   VALID  
+LOGMNR_I1TABCOMPART$ INDEX PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I1TABCOMPART$ INDEX                   VALID  
+LOGMNR_I2TABCOMPART$ INDEX PARTITION         VALID  
+LOGMNR_I2TABCOMPART$ INDEX                   VALID  
+LOGMNR_TYPE$         TABLE PARTITION         VALID  
+LOGMNR_TYPE$         TABLE                   VALID  
+LOGMNR_I1TYPE$       INDEX PARTITION         VALID  
+LOGMNR_I1TYPE$       INDEX                   VALID  
+LOGMNR_COLTYPE$      TABLE PARTITION         VALID  
+LOGMNR_COLTYPE$      TABLE                   VALID  
+LOGMNR_I1COLTYPE$    INDEX PARTITION         VALID  
+LOGMNR_I1COLTYPE$    INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_ATTRIBUTE$    TABLE PARTITION         VALID  
+LOGMNR_ATTRIBUTE$    TABLE                   VALID  
+LOGMNR_I1ATTRIBUTE$  INDEX PARTITION         VALID  
+LOGMNR_I1ATTRIBUTE$  INDEX                   VALID  
+LOGMNR_LOB$          TABLE PARTITION         VALID  
+LOGMNR_LOB$          TABLE                   VALID  
+LOGMNR_I1LOB$        INDEX PARTITION         VALID  
+LOGMNR_I1LOB$        INDEX                   VALID  
+LOGMNR_CON$          TABLE PARTITION         VALID  
+LOGMNR_CON$          TABLE                   VALID  
+LOGMNR_I1CON$        INDEX PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I1CON$        INDEX                   VALID  
+LOGMNR_CONTAINER$    TABLE PARTITION         VALID  
+LOGMNR_CONTAINER$    TABLE                   VALID  
+LOGMNR_I1CONTAINER$  INDEX PARTITION         VALID  
+LOGMNR_I1CONTAINER$  INDEX                   VALID  
+LOGMNR_CDEF$         TABLE PARTITION         VALID  
+LOGMNR_CDEF$         TABLE                   VALID  
+LOGMNR_I1CDEF$       INDEX PARTITION         VALID  
+LOGMNR_I1CDEF$       INDEX                   VALID  
+LOGMNR_I2CDEF$       INDEX PARTITION         VALID  
+LOGMNR_I2CDEF$       INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I3CDEF$       INDEX PARTITION         VALID  
+LOGMNR_I3CDEF$       INDEX                   VALID  
+LOGMNR_CCOL$         TABLE PARTITION         VALID  
+LOGMNR_CCOL$         TABLE                   VALID  
+LOGMNR_I1CCOL$       INDEX PARTITION         VALID  
+LOGMNR_I1CCOL$       INDEX                   VALID  
+LOGMNR_ICOL$         TABLE PARTITION         VALID  
+LOGMNR_ICOL$         TABLE                   VALID  
+LOGMNR_I1ICOL$       INDEX PARTITION         VALID  
+LOGMNR_I1ICOL$       INDEX                   VALID  
+LOGMNR_LOBFRAG$      TABLE PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_LOBFRAG$      TABLE                   VALID  
+LOGMNR_I1LOBFRAG$    INDEX PARTITION         VALID  
+LOGMNR_I1LOBFRAG$    INDEX                   VALID  
+LOGMNR_INDPART$      TABLE PARTITION         VALID  
+LOGMNR_INDPART$      TABLE                   VALID  
+LOGMNR_I1INDPART$    INDEX PARTITION         VALID  
+LOGMNR_I1INDPART$    INDEX                   VALID  
+LOGMNR_I2INDPART$    INDEX PARTITION         VALID  
+LOGMNR_I2INDPART$    INDEX                   VALID  
+LOGMNR_INDSUBPART$   TABLE PARTITION         VALID  
+LOGMNR_INDSUBPART$   TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I1INDSUBPART$ INDEX PARTITION         VALID  
+LOGMNR_I1INDSUBPART$ INDEX                   VALID  
+LOGMNR_INDCOMPART$   TABLE PARTITION         VALID  
+LOGMNR_INDCOMPART$   TABLE                   VALID  
+LOGMNR_I1INDCOMPART$ INDEX PARTITION         VALID  
+LOGMNR_I1INDCOMPART$ INDEX                   VALID  
+LOGMNR_LOGMNR_BUILDL TABLE PARTITION         VALID  
+LOGMNR_LOGMNR_BUILDL TABLE                   VALID  
+LOGMNR_I1LOGMNR_BUIL INDEX PARTITION         VALID  
+LOGMNR_I1LOGMNR_BUIL INDEX                   VALID  
+LOGMNR_NTAB$         TABLE PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_NTAB$         TABLE                   VALID  
+LOGMNR_I1NTAB$       INDEX PARTITION         VALID  
+LOGMNR_I1NTAB$       INDEX                   VALID  
+LOGMNR_I2NTAB$       INDEX PARTITION         VALID  
+LOGMNR_I2NTAB$       INDEX                   VALID  
+LOGMNR_OPQTYPE$      TABLE PARTITION         VALID  
+LOGMNR_OPQTYPE$      TABLE                   VALID  
+LOGMNR_I1OPQTYPE$    INDEX PARTITION         VALID  
+LOGMNR_I1OPQTYPE$    INDEX                   VALID  
+LOGMNR_SUBCOLTYPE$   TABLE PARTITION         VALID  
+LOGMNR_SUBCOLTYPE$   TABLE                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_I1SUBCOLTYPE$ INDEX PARTITION         VALID  
+LOGMNR_I1SUBCOLTYPE$ INDEX                   VALID  
+LOGMNR_KOPM$         TABLE PARTITION         VALID  
+LOGMNR_KOPM$         TABLE                   VALID  
+LOGMNR_I1KOPM$       INDEX PARTITION         VALID  
+LOGMNR_I1KOPM$       INDEX                   VALID  
+LOGMNR_PROPS$        TABLE PARTITION         VALID  
+LOGMNR_PROPS$        TABLE                   VALID  
+LOGMNR_I1PROPS$      INDEX PARTITION         VALID  
+LOGMNR_I1PROPS$      INDEX                   VALID  
+LOGMNR_ENC$          TABLE PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR_ENC$          TABLE                   VALID  
+LOGMNR_I1ENC$        INDEX PARTITION         VALID  
+LOGMNR_I1ENC$        INDEX                   VALID  
+LOGMNR_REFCON$       TABLE PARTITION         VALID  
+LOGMNR_REFCON$       TABLE                   VALID  
+LOGMNR_I1REFCON$     INDEX PARTITION         VALID  
+LOGMNR_I1REFCON$     INDEX                   VALID  
+LOGMNR_PARTOBJ$      TABLE PARTITION         VALID  
+LOGMNR_PARTOBJ$      TABLE                   VALID  
+LOGMNR_I1PARTOBJ$    INDEX PARTITION         VALID  
+LOGMNR_I1PARTOBJ$    INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNRP_CTAS_PART_MA TABLE PARTITION         VALID  
+LOGMNRP_CTAS_PART_MA TABLE                   VALID  
+LOGMNRP_CTAS_PART_MA INDEX PARTITION         VALID  
+LOGMNRP_CTAS_PART_MA INDEX                   VALID  
+LOGMNRP_CTAS_PART_MA INDEX PARTITION         VALID  
+LOGMNRP_CTAS_PART_MA INDEX                   VALID  
+LOGMNR_SHARD_TS      TABLE PARTITION         VALID  
+LOGMNR_SHARD_TS      TABLE                   VALID  
+LOGMNR_I1SHARD_TS    INDEX PARTITION         VALID  
+LOGMNR_I1SHARD_TS    INDEX                   VALID  
+LOGMNR$TAB_GG_REC    TYPE                    VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR$COL_GG_REC    TYPE                    VALID  
+LOGMNR$SEQ_GG_REC    TYPE                    VALID  
+LOGMNR$KEY_GG_REC    TYPE                    VALID  
+LOGMNR$GSBA_GG_REC   TYPE                    VALID  
+LOGMNR$TAB_GG_RECS   TYPE                    VALID  
+LOGMNR$COL_GG_RECS   TYPE                    VALID  
+LOGMNR$SEQ_GG_RECS   TYPE                    VALID  
+LOGMNR$KEY_GG_RECS   TYPE                    VALID  
+LOGMNR$GSBA_GG_RECS  TYPE                    VALID  
+SCHEDULER_PROGRAM_AR VIEW                    VALID  
+SCHEDULER_JOB_ARGS   VIEW                    VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+SCHEDULER_PROGRAM_AR TABLE                   VALID  
+SYS_IL0000012612C000 INDEX                   VALID  
+SYS_LOB0000012612C00 LOB                     VALID  
+SCHEDULER_JOB_ARGS_T TABLE                   VALID  
+SYS_IL0000012615C000 INDEX                   VALID  
+SYS_LOB0000012615C00 LOB                     VALID  
+LOGSTDBY$PARAMETERS  TABLE                   VALID  
+LOGSTDBY$EVENTS      TABLE                   VALID  
+SYS_IL0000015280C000 INDEX                   VALID  
+SYS_LOB0000015280C00 LOB                     VALID  
+LOGSTDBY$EVENTS_IND  INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGSTDBY$EVENTS_IND_ INDEX                   VALID  
+LOGSTDBY$EVENTS_IND_ INDEX                   VALID  
+LOGSTDBY$APPLY_PROGR TABLE PARTITION         VALID  
+LOGSTDBY$APPLY_PROGR TABLE                   VALID  
+LOGSTDBY$APPLY_MILES TABLE                   VALID  
+LOGSTDBY$SCN         TABLE                   VALID  
+LOGSTDBY$FLASHBACK_S TABLE                   VALID  
+SYS_C004810          INDEX                   VALID  
+LOGSTDBY$PLSQL       TABLE                   VALID  
+SYS_IL0000015292C000 INDEX                   VALID  
+SYS_LOB0000015292C00 LOB                     VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGSTDBY$SKIP_TRANSA TABLE                   VALID  
+LOGSTDBY$SKIP        TABLE                   VALID  
+LOGSTDBY$SKIP_IDX1   INDEX                   VALID  
+LOGSTDBY$SKIP_IDX2   INDEX                   VALID  
+LOGSTDBY$SKIP_SUPPOR TABLE                   VALID  
+LOGSTDBY$SKIP_IND    INDEX                   VALID  
+LOGSTDBY$HISTORY     TABLE                   VALID  
+LOGSTDBY$EDS_TABLES  TABLE                   VALID  
+LOGSTDBY$EDS_TABLES_ INDEX                   VALID  
+LOGMNR$TAB_GG_TABF_P FUNCTION                VALID  
+LOGMNR$COL_GG_TABF_P FUNCTION                VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+LOGMNR$SEQ_GG_TABF_P FUNCTION                VALID  
+LOGMNR$KEY_GG_TABF_P FUNCTION                VALID  
+LOGMNR$GSBA_GG_TABF_ FUNCTION                VALID  
+PRODUCT_PRIVS        VIEW                    VALID  
+SQLPLUS_PRODUCT_PROF TABLE                   VALID  
+PRODUCT_USER_PROFILE SYNONYM                 VALID  
+HELP                 TABLE                   VALID  
+HELP_TOPIC_SEQ       INDEX                   VALID  
+TESTBWIZ             TABLE                   VALID  
+ISEQ$$_73580         SEQUENCE                VALID  
+ZIP                  TABLE PARTITION         VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+ZIP                  TABLE PARTITION         VALID  
+ZIP                  TABLE                   VALID  
+PK_ZIP               INDEX                   VALID  
+CUSTOMER             TABLE                   VALID  
+PK_CUSTOMER_ID       INDEX                   VALID  
+PRODUCT              TABLE                   VALID  
+PK_PRODUCTID         INDEX                   VALID  
+ORDERS               TABLE                   VALID  
+PK_ORDERID           INDEX                   VALID  
+ORDER_ITEM           TABLE                   VALID  
+PK_ORDER_ITEM        INDEX                   VALID  
+
+SUBSTR(OBJECT_NAME,1 OBJECT_TYPE             STATUS 
+-------------------- ----------------------- -------
+PAYMENT              TABLE                   VALID  
+PK_PAYMENTID         INDEX                   VALID  
+FK_ZIP               INDEX                   VALID  
+FK_CUSTOMERID        INDEX                   VALID  
+FK_ORDER_ID1         INDEX                   VALID  
+FK_PRODUCT_ID        INDEX                   VALID  
+FK_ORDER_ID2         INDEX                   VALID  
+
+480 rows selected. 
+

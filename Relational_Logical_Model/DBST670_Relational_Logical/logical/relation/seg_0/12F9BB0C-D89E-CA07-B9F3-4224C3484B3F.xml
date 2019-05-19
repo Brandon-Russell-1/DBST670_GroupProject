@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK_EMP_STOREID" directorySegmentName="seg_0" id="12F9BB0C-D89E-CA07-B9F3-4224C3484B3F">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:03:00 UTC</createdTime>
+<generatorID>E6817B1A-F5D0-D790-160C-0974004AF2A5</generatorID>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<engineerTo>
+<item key="34C44977-6948-0E86-3F0C-FA60F2BAC892" value="true"/>
+</engineerTo>
+<sourcePk>FE82E0DD-3E27-4E14-CA30-45CED3BD444A</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>6034FB67-C8BD-F5C3-224C-D931439274C4</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>227C6160-4466-41DD-A74B-86693441DAD0</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

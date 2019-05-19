@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="942AC0C3-AA8F-F60C-A10A-CBBF8218B4E3" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="ORDER_ITEM">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>ORDER_ITEM</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ORDERID" id="D5218267-76B7-4AD7-2C2E-ADA44DBF0BD9">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>ORDER_ITEM</sourceObjSchema>
+<sourceObjName>ORDERID</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9939F9F2-FFEF-C76A-B300-D0F0647F0529" referredColumn="3F887519-5947-BB55-0F8C-3B2097BAB3C8"/>
+</associations>
+</Column>
+<Column name="PRODUCTID" id="56E3D7AB-80CA-E570-16B7-EBAC231E807B">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>ORDER_ITEM</sourceObjSchema>
+<sourceObjName>PRODUCTID</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8774C809-B66D-4302-C06C-08EB46310F06" referredColumn="6BDB05A0-BA1C-1D16-9C69-85073D1809FD"/>
+</associations>
+</Column>
+<Column name="QUANTITY" id="5741CC44-CAC3-592C-AC6B-11AA1C285640">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>ORDER_ITEM</sourceObjSchema>
+<sourceObjName>QUANTITY</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="82943FD4-895F-34E9-0BAD-2F28C31E5C3B" name="PK_ORDER_ITEM">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PK_ORDER_ITEM</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D5218267-76B7-4AD7-2C2E-ADA44DBF0BD9"/>
+<colUsage columnID="56E3D7AB-80CA-E570-16B7-EBAC231E807B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="15E23BCB-DEF4-612D-BD82-C1D2ED92ABB9" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="FK_ORDER_ID1">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>FK_ORDER_ID1</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D5218267-76B7-4AD7-2C2E-ADA44DBF0BD9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2C3AAC19-4DC3-23B5-D591-003A9DED6725" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="FK_PRODUCT_ID">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>FK_PRODUCT_ID</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="56E3D7AB-80CA-E570-16B7-EBAC231E807B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="44AD7D1E-D900-1CBD-44BE-44452038F49E" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="PK_ORDER_ITEM">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PK_ORDER_ITEM</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D5218267-76B7-4AD7-2C2E-ADA44DBF0BD9"/>
+<colUsage columnID="56E3D7AB-80CA-E570-16B7-EBAC231E807B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BD7366F2-0019-D8BA-285A-D33EB06A4742" name="FK_ORDER_ID1">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D5218267-76B7-4AD7-2C2E-ADA44DBF0BD9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6FEC77FE-C272-87BF-1CD9-27F5E90B8F2B" name="FK_PRODUCT_ID">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="56E3D7AB-80CA-E570-16B7-EBAC231E807B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

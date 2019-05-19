@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AB6EB4CF-BFE7-9B08-4E7E-325B5E3EFE86" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="PRODUCT_CAT">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PRODUCT_CAT</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PRODCATID" id="DFD9DA2E-BE3A-06B7-3F1D-29F34831A7DF">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>PRODUCT_CAT</sourceObjSchema>
+<sourceObjName>PRODCATID</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRODCATTYPE" id="D8379594-266B-0635-1B79-DE8CC60A60E6">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>PRODUCT_CAT</sourceObjSchema>
+<sourceObjName>PRODCATTYPE</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25 BYTE</dataTypeSize>
+<ownDataTypeParameters>25 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESCRIPTION" id="B1C5A479-5B16-E59A-1DF4-54CAF7D3A13F">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>PRODUCT_CAT</sourceObjSchema>
+<sourceObjName>DESCRIPTION</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150 BYTE</dataTypeSize>
+<ownDataTypeParameters>150 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="88042742-2340-41B2-76C9-E22B67C13BFD" name="PK_PRODCAT">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PK_PRODCAT</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DFD9DA2E-BE3A-06B7-3F1D-29F34831A7DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B9AF5FF5-130B-3EBB-7E41-6526C2084E8E" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="PK_PRODCAT">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PK_PRODCAT</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DFD9DA2E-BE3A-06B7-3F1D-29F34831A7DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

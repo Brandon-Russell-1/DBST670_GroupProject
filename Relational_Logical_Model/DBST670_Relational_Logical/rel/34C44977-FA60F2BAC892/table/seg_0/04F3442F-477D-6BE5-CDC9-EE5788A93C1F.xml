@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="04F3442F-477D-6BE5-CDC9-EE5788A93C1F" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="ZIP">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>ZIP</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ZIPCODE" id="DA922DD0-7325-B69E-A621-D779BED5A15A">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>ZIP</sourceObjSchema>
+<sourceObjName>ZIPCODE</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CITY" id="D4FF9046-97A6-1D75-ED15-D51FA36E62A7">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>ZIP</sourceObjSchema>
+<sourceObjName>CITY</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>25 BYTE</dataTypeSize>
+<ownDataTypeParameters>25 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATE" id="E7A5E31B-32AB-88EE-F2DA-4448CBBAD11E">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>ZIP</sourceObjSchema>
+<sourceObjName>STATE</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>2 BYTE</dataTypeSize>
+<ownDataTypeParameters>2 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0A9E0B43-BD51-62D8-AF0C-9EBD0A6019F3" name="PK_ZIP">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PK_ZIP</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA922DD0-7325-B69E-A621-D779BED5A15A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B9318C4C-DBA9-49ED-87F6-7E47F38137C3" schemaObject="60EA8805-1472-4785-EA94-E6B7DDE0973F" name="PK_ZIP">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>PK_ZIP</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA922DD0-7325-B69E-A621-D779BED5A15A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,76 @@
+Drop table Supplier;
+Drop table Store;
+
+/*---------------------------------------------------*/
+/*     CREATE TABLESPACE                             */
+/*---------------------------------------------------*/
+
+CREATE TABLESPACE "USER_DATA3" LOGGING
+DATAFILE '/U04/dbprof/user_data03.dbf' SIZE 20480 REUSE AUTOEXTEND
+ON NEXT 640K MAXSIZE UNLIMITED EXTENT MANAGEMENT LOCAL;
+
+
+/*---------------------------------------------------*/
+/*     CREATE TABLES                                 */
+/*---------------------------------------------------*/
+
+create table Supplier
+	(SUPPLIER_NO	NUMBER(10) NOT NULL,
+	 SUPPLIER_NAME	VARCHAR2(30) NOT NULL,
+	 ADDRESS	VARCHAR2(35),
+	 ZIPCODE	CHAR(10)     NOT NULL,
+	 PHONE_NO	CHAR(15),
+	 EMAIL		VARCHAR2(35),
+	 CONTACT_NAME	VARCHAR2(30),
+constraint pk_supplier_no  primary key (SUPPLIER)
+	using index tablespace USER_INDX1
+	STORAGE (INITIAL 50K NEXT 10K),
+constraint fk_zip2 foreign  key (ZIPCODE) references ZIP
+	)
+	pctfree 5
+	pctused 60
+TABLESPACE USER_DATA3
+	storage
+		(
+			initiaL 160K
+			next 10K
+			maxextents unlimited
+			pctincrease 0
+		);
+
+create table STORE
+	(STORE_NO	NUMBER(10) NOT NULL,
+	 ADDRESS	VARCHAR2(35) NOT NULL,
+	 ZIPCODE	CHAR(10)     NOT NULL,
+	 MANAGER_NO	NUMBER(9),
+	 PHONE_NO	CHAR(15),
+constraint pk_store_no  primary key (STORE)
+	using index tablespace USER_INDX1
+	STORAGE (INITIAL 50K NEXT 10K),
+constraint fk_zip3 foreign  key (ZIPCODE) references ZIP
+	)
+	pctfree 5
+	pctused 60
+TABLESPACE USER_DATA3
+	storage
+		(
+			initial 120k 
+			next 	10k
+			maxextents unlimited
+			pctincrease 0
+		);
+/*--------------------------------------------*/
+/*		   INDEXES	              */
+/*--------------------------------------------*/
+
+create index  fk_zip2
+  on SUPPLIER (ZIPCODE)
+tablespace USER_INDX1
+	STORAGE (INITIAL 50K NEXT 10K)
+	;
+
+create index  fk_zip3
+  on STORE (ZIPCODE)
+tablespace USER_INDX1
+	STORAGE (INITIAL 50K NEXT 10K)
+	;

@@ -1,0 +1,272 @@
+SQL> SET ECHO ON;
+SQL> 
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> /*---------------------------------------------------*/
+SQL> /*     Generate Read and Work Loads for Lab 10/11    */
+SQL> /*---------------------------------------------------*/
+SQL> 
+SQL> SHOW USER;
+USER is "DATADESIGNLEADUSER"
+SQL> 
+SQL> CONNECT sys/sysdba as SYSDBA;
+Connected.
+SQL> 
+SQL> SHOW USER;
+USER is "SYS"
+SQL> 
+SQL> /*Create Database statistics snapshot*/
+SQL> 
+SQL> exec dbms_workload_repository.create_snapshot();
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> /*Generate ADDM report - Run from SQLPlus as SYS*/
+SQL> set long 1000000;
+SQL> set pagesize 50000;
+SQL> column get_clob format a80;
+SQL> select dbms_advisor.get_task_report(
+  2  task_name, 'TEXT', 'ALL') 
+  3  as ADDM_report
+  4  from dba_advisor_tasks
+  5  where task_id=(
+  6  select max(t.task_id)
+  7  from dba_advisor_tasks t,dba_advisor_log l
+  8  where t.task_id = l.task_id
+  9  and t.advisor_name='ADDM'
+ 10  and l.status= 'COMPLETED');
+
+ADDM_REPORT                                                                     
+--------------------------------------------------------------------------------
+          ADDM Report for Task 'ADDM:875249898_1_1450'
+          --------------------------------------------
+ 
+Analysis Period
+---------------
+AWR snapshot range from 1449 to 1450.
+Time period starts at 05-APR-19 01.42.46 PM
+Time period ends at 05-APR-19 01.49.09 PM
+ 
+Analysis Target
+---------------
+Database 'DBST670' with DB ID 875249898.
+Database version 12.2.0.1.0.
+ADDM performed an analysis of instance DBST670, numbered 1 and hosted at 
+localhost.localdomain.
+ 
+Activity During the Analysis Period
+-----------------------------------
+Total database time was 2 seconds.
+The average number of active sessions was .01.
+ 
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+There are no findings to report.
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+          Additional Information
+          ----------------------
+ 
+Miscellaneous Information
+-------------------------
+There was no significant database activity to run the ADDM.
+ 
+
+SQL> 
+SQL> 
+SQL> /*Write Load*/
+SQL> 
+SQL> /*Drop/Create region backup table*/
+SQL> DROP TABLE regionbackup;
+
+Table REGIONBACKUP dropped.
+
+SQL> 
+SQL> CREATE TABLE regionbackup (
+  2      regionid      NUMBER(10) NOT NULL,
+  3      regionname    VARCHAR(25),
+  4      description   VARCHAR(150),
+  5      CONSTRAINT pk_region PRIMARY KEY ( regionid )
+  6          USING INDEX TABLESPACE user_indx1
+  7              STORAGE ( INITIAL 50 K NEXT 10 K )
+  8  )
+  9  PCTFREE 5 PCTUSED 90 TABLESPACE user_data1
+ 10      STORAGE ( INITIAL 192 k NEXT 20 k MAXEXTENTS UNLIMITED PCTINCREASE 0 );
+
+Table REGIONBACKUP created.
+
+SQL> 
+SQL> /*Insert current data*/
+SQL> INSERT INTO regionbackup SELECT * FROM DataDesignLeadUser.region;
+
+1,000 rows inserted.
+
+SQL> 
+SQL> 
+SQL> /*Create loop to insert from 1,001 to 1,000,000 additional rows*/
+SQL> BEGIN
+  2      FOR v_LoopCounter IN 1001..1000000 LOOP
+  3          INSERT INTO REGIONBACKUP (regionid,regionname, description)
+  4          VALUES (v_LoopCounter, 'name', 'description');
+  5          END LOOP;
+  6      END;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+SQL> /*Verify data is there*/
+SQL> 
+SQL> /*SELECT * FROM REGIONBACKUP;*/
+SQL> 
+SQL> /*Run loop to delete each record individually*/
+SQL> declare
+  2    i number := 1;
+  3    cursor s1 is SELECT rowid, r.* FROM REGIONBACKUP r;
+  4  begin
+  5    for c1 in s1 loop
+  6        DELETE FROM REGIONBACKUP 
+  7               WHERE regionid = i;
+  8        i := i + 1;             
+  9    end loop;
+ 10    commit;
+ 11  end;
+ 12  /
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> /*Verify data is Gone*/
+SQL> SELECT * FROM REGIONBACKUP;
+no rows selected
+SQL> 
+SQL> /*Do it again!*/
+SQL> 
+SQL> /*Drop/Create region backup table*/
+SQL> DROP TABLE regionbackup;
+
+Table REGIONBACKUP dropped.
+
+SQL> 
+SQL> CREATE TABLE regionbackup (
+  2      regionid      NUMBER(10) NOT NULL,
+  3      regionname    VARCHAR(25),
+  4      description   VARCHAR(150),
+  5      CONSTRAINT pk_region PRIMARY KEY ( regionid )
+  6          USING INDEX TABLESPACE user_indx1
+  7              STORAGE ( INITIAL 50 K NEXT 10 K )
+  8  )
+  9  PCTFREE 5 PCTUSED 90 TABLESPACE user_data1
+ 10      STORAGE ( INITIAL 192 k NEXT 20 k MAXEXTENTS UNLIMITED PCTINCREASE 0 );
+
+Table REGIONBACKUP created.
+
+SQL> 
+SQL> /*Insert current data*/
+SQL> INSERT INTO regionbackup SELECT * FROM DataDesignLeadUser.region;
+
+1,000 rows inserted.
+
+SQL> 
+SQL> /*Create loop to insert from 1,001 to 1,000,000 additional rows*/
+SQL> BEGIN
+  2      FOR v_LoopCounter IN 1001..1000000 LOOP
+  3          INSERT INTO REGIONBACKUP (regionid,regionname, description)
+  4          VALUES (v_LoopCounter, 'name', 'description');
+  5          END LOOP;
+  6      END;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+SQL> /*Verify data is there*/
+SQL> /*SELECT * FROM REGIONBACKUP;*/
+SQL> 
+SQL> /*Run loop to delete each record individually*/
+SQL> declare
+  2    i number := 1;
+  3    cursor s1 is SELECT rowid, r.* FROM REGIONBACKUP r;
+  4  begin
+  5    for c1 in s1 loop
+  6        DELETE FROM REGIONBACKUP 
+  7               WHERE regionid = i;
+  8        i := i + 1;             
+  9    end loop;
+ 10    commit;
+ 11  end;
+ 12  /
+
+PL/SQL procedure successfully completed.
+
+SQL> /*Verify data is Gone*/
+SQL> SELECT * FROM REGIONBACKUP;
+no rows selected
+SQL> 
+SQL> 
+SQL> /*Create Database statistics snapshot*/
+SQL> 
+SQL> exec dbms_workload_repository.create_snapshot();
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> /*Generate ADDM report - Run from SQLPlus as SYS*/
+SQL> set long 1000000;
+SQL> set pagesize 50000;
+SQL> column get_clob format a80;
+SQL> select dbms_advisor.get_task_report(
+  2  task_name, 'TEXT', 'ALL') 
+  3  as ADDM_report
+  4  from dba_advisor_tasks
+  5  where task_id=(
+  6  select max(t.task_id)
+  7  from dba_advisor_tasks t,dba_advisor_log l
+  8  where t.task_id = l.task_id
+  9  and t.advisor_name='ADDM'
+ 10  and l.status= 'COMPLETED');
+
+ADDM_REPORT                                                                     
+--------------------------------------------------------------------------------
+          ADDM Report for Task 'ADDM:875249898_1_1451'
+          --------------------------------------------
+ 
+Analysis Period
+---------------
+AWR snapshot range from 1450 to 1451.
+Time period starts at 05-APR-19 01.49.09 PM
+Time period ends at 05-APR-19 01.50.46 PM
+ 
+Analysis Target
+---------------
+Database 'DBST670' with DB ID 875249898.
+Database version 12.2.0.1.0.
+ADDM performed an analysis of instance DBST670, numbered 1 and hosted at 
+localhost.localdomain.
+ 
+Activity During the Analysis Period
+-----------------------------------
+Total database time was 90 seconds.
+The average number of active sessions was .93.
+ 
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+There are no findings to report.
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+          Additional Information
+          ----------------------
+ 
+Miscellaneous Information
+-------------------------
+There was no significant database activity to run the ADDM.
+ 
+
+Connection created by CONNECT script command disconnected

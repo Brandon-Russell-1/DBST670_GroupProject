@@ -1,0 +1,1063 @@
+---------------------------------------------------------------------------------------
+			1. Sizing for ZIP Table
+
+---------------------------------------------------------------------------------------
+1.  Block header on zip
+	57 bytes for fixed header size
+	23*1
+
+	57+23= 80 bytes for the header.
+
+	plus
+	4 bytes for table directory
+	2*R where R is number of rows in one block
+
+ 	Header  = 80 + (4 + 2R)
+
+2.  Formula used :
+
+Available space within each block=
+(DB_BLOCK_SIZE - BLOCK_HEADER_SIZE) - 
+(DB_BLOCK_SIZE - BLOCK_HEADER_SIZE) * (PCTFREE/100)
+
+So,
+	Available Data Space for a table. PCTFREE = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+3. Average row size based on the data types of columns.
+	ZIPCODE			char(10)  = 10 bytes
+	CITY			char(25)  = 25 bytes
+        STATE			char(2)   =  2 bytes
+
+	Average row size = 37 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*3)+(3*0)+37=50
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/50
+	50R rows/block = (7702-2R) * rows/block)
+	52R rows/block = 7702 rows/block
+	R = 7702/52
+	R = 148.11 rows/block
+	R = 148 rows/block
+
+6. Number of blocks required for zip table. Here the number of rows is 50,000.
+	# of rows/ R rows/block
+	50,000 rows/ 148 rows/block
+	337.83 blocks
+	338 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space zip table takes is 340
+
+Number of bytes = # of blocks*8192 bytes
+	= 340 * 8192 bytes
+	= 2785280 bytes
+	= 2785280/1024 k bytes
+	= 2720k
+
+Since the zip table is partitioned because it has 50,000 of data.
+	2720/2= 1360k So each partition will have initial extent of 1360k
+Or you can increase a little bit 1500k if you do not know the exact number of data.
+
+-----------------------------------------------------------------------------------------------
+
+			2. Sizing for Customer Table
+
+-----------------------------------------------------------------------------------------------
+
+
+1.  Block header on customer
+	57 bytes for fixed header size
+	23*1
+
+	57+23= 80 bytes for the header.
+
+	Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 20
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(20/100))
+	= (8192 - (84+2R)) - ((8192- (84+2R))*0.2)
+	= 8192 - 84 - 2R - 8192*0.2 + (84 + 2R) * 0.2
+	= 8108 - 2R - 1638.4 + 16.8 + 0.4R
+	= 8108 - 1638.4 + 16.8 - 2R + 0.4R
+	= 6486.4 - 1.6R
+	= 6486.4 - 2R
+
+
+3.
+	 CUSTOMERID	NUMBER(10)	10/2+1= 6bytes
+	 FIRSTNAME	VARCHAR2(15)		10bytes
+	 LASTNAME	VARCHAR2(15)		10bytes
+	 PHONENO	CHAR(15)		15bytes
+	 ADDRESS	VARCHAR2(35)		25bytes
+	 ZIPCODE	CHAR(10)		10bytes
+
+	Average row size = 76 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*3)+(3*3)+71 = 10+3+9+76 = 98
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((6486.4 - 2R) * rows/block)/98
+	98R rows/block = (6486.4 - 2R) * rows/block)
+	100R rows/block = 6486.4 rows/block
+	R = 6486.4/100
+	R = 64.86 rows/block
+	R = 64 rows/block taking the floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 64 rows/block
+	15.625 blocks
+	16 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 20
+
+Number of bytes = # of blocks*8192 bytes
+	= 20 * 8192 bytes
+	= 163840 bytes
+	= 122880/1024 k bytes
+	= 160k
+
+You can increase a little bit 200k if you do not know the exact number of data.
+
+-----------------------------------------------------------------------------------------------
+
+			3. Sizing for PRODUCT Table
+
+-----------------------------------------------------------------------------------------------
+
+1.  Block header on PRODUCT
+	57 bytes for fixed header size
+	23*1
+
+	57+23= 80 bytes for the header.
+
+	Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+
+3.
+	 PRODUCTID 		NUMBER(10)	10/2+1=6bytes
+	 PROD_UNIT_PRICE	NUMBER(10)	10/2+1=6bytes
+	 DESCRIPTION		VARCHAR2(150)	90
+
+	Average row size = 102 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*2)+(3*1)+102 = 10+2+3+88 = 103
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/104
+	103R rows/block = (7702-2R) * rows/block)
+	105R rows/block = 7702 rows/block
+	R = 7702/105
+	R = 73.35 rows/block
+	R = 73 rows/block taking th floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 73 rows/block
+	13.69 blocks
+	14 blocks	taking the ceil
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 15
+
+Number of bytes = # of blocks*8192 bytes
+	= 15 * 8192 bytes
+	= 122880 bytes
+	= 122880/1024 k bytes
+	= 120k
+
+You can increase a little bit 150k if you do not know the exact number of data.
+
+
+--------------------------------------------------------------------------------------------
+
+			4. Sizing for ORDERS Table
+
+--------------------------------------------------------------------------------------------
+
+
+1.  Block header on orders
+	57 bytes for fixed header size
+	23*1
+
+	57+23= 80 bytes for the header.
+	
+	Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+
+3.
+	 ORDERID		NUMBER(10)	10/2+1	6bytes
+	 CUSTOMERID		NUMBER(10)	10/2+1	6bytes
+	 SALES_EMP_SSN		NUMBER(9)	10/2+1	6bytes
+	 ORDER_SHIP_METHOD	CHAR(10)	10	10bytes
+
+	Average row size = 28 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*4)+(3*0)+28 = 10+4+0+28 = 42
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/42
+	42R rows/block = (7702-2R) * rows/block)
+	44R rows/block = 7702 rows/block
+	R = 7702/44
+	R = 175.045 rows/block
+	R = 175 rows/block taking th floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 175 rows/block
+	5.71 blocks
+	6 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 10
+
+Number of bytes = # of blocks*8192 bytes
+	= 10 * 8192 bytes
+	= 81920 bytes
+	= 81920 /1024 k bytes
+	= 80k
+
+You can increase a little bit 100k if you do not know the exact number of data.
+
+
+------------------------------------------------------------------------------------------
+
+			5. Sizing for ORDERITEM Table
+
+------------------------------------------------------------------------------------------
+
+1.  Block header on orderitem
+	57 bytes for fixed header size
+	23*1
+
+	57+23= 80 bytes for the header.
+	
+	Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+3.
+
+	 ORDERID	NUMBER(10)	10/2+1=6bytes
+	 PRODUCTID	NUMBER(10)	10/2+1=6bytes
+	 QUANTITY	NUMBER(10)	10/2+1=6bytes
+
+	Average row size = 18 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*3)+(3*0)+18 = 10+3+0+18 = 31
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/31
+	31R rows/block = (7702-2R) * rows/block)
+	33R rows/block = 7702 rows/block
+	R = 7702/33
+	R = 233.39 rows/block
+	R = 233 rows/block
+
+6. Number of blocks required for 0rder table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 233 rows/block
+	4.29 blocks
+	5 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+--------------------------------------------------------------------------------------------
+
+			6. Sizing for PAYMENT Table
+
+--------------------------------------------------------------------------------------------
+
+
+1.  Block header on payment
+	57 bytes for fixed header size
+	23*1
+
+	57+23= 80 bytes for the header.
+
+	Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 20
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(20/100))
+	= (8192 - (84+2R)) - ((8192- (84+2R))*0.2)
+	= 8192 - 84 - 2R - 8192*0.2 + (84 + 2R) * 0.2
+	= 8108 - 2R - 1638.4 + 16.8 + 0.4R
+	= 8108 - 1638.4 + 16.8 - 2R + 0.4R
+	= 6486.4 - 1.6R
+	= 6486.4 - 2R
+
+
+3.
+	 PAYMENTID		NUMBER(10)	10/2+1=6bytes
+	 ORDERID		NUMBER(10)	10/2+1=6bytes
+	 CARD_EXP_DATE		DATE		      =7bytes
+	 CARD_NUMBER		NUMBER(20)	10/2+1=6bytes
+	 PAYMENT_AMOUNT		NUMBER(20)	10/2+1=6bytes
+	 PAYMENT_METHOD		VARCHAR2(5)	      =4bytes
+
+	Average row size =  35bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*5)+(3*1)+35 = 10+5+3+35 = 53
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((6486.4 - 2R) * rows/block)/53
+	53R rows/block = (6486.4 - 2R) * rows/block)
+	55R rows/block = 6486.4 rows/block
+	R = 6486.4/53
+	R = 122.37 rows/block
+	R = 122 rows/block taking the floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 122 rows/block
+	8.19 blocks
+	9 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 10
+
+Number of bytes = # of blocks*8192 bytes
+	= 10 * 8192 bytes
+	= 81920 bytes
+	= 81920/1024 k bytes
+	= 80k
+
+You can increase a little bit 100k if you do not know the exact number of data.
+
+----------------------------------------------------------------------------------------
+
+			 Index Sizing 
+
+----------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------
+
+			1. pk_zip  Primary key sizing
+
+----------------------------------------------------------------------------------------
+1. Header  = 80 + (4 + 2R)
+
+2.  Available Data Space for a table. PCTFREE = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+3.	Average row size based on the data types of columns.
+	ZIPCODE			char(10)  = 10 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+10 = 10+1+10 = 21
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/21
+	21R rows/block = (7702-2R) * rows/block)
+	23R rows/block = 7702 rows/block
+	R = 7702/23
+	R = 334.86 rows/block
+	R = 334 rows/block
+
+6. Number of blocks required for zip table. Here the number of rows is 50,000.
+	# of rows/ R rows/block
+	50,000 rows/ 334 rows/block
+	149.70 blocks
+	150 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space zip table takes is 150
+
+Number of bytes = # of blocks*8192 bytes
+	= 150 * 8192 bytes
+	= 1228800 bytes
+	= 1228800/1024 k bytes
+	= 1200k
+
+You can increase a little bit 1300k if you do not know the exact number of data.
+
+
+Note:  That the true size of the index depends on the number of records that do not contain NULL values within the indexed columns. We are assuming there would be no NULL values.
+----------------------------------------------------------------------------------------
+
+			2. pk_customer_id primary  key (CUSTOMERID)
+
+----------------------------------------------------------------------------------------
+
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 20
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(20/100))
+	= (8192 - (84+2R)) - ((8192- (84+2R))*0.2)
+	= 8192 - 84 - 2R - 8192*0.2 + (84 + 2R) * 0.2
+	= 8108 - 2R - 1638.4 + 16.8 + 0.4R
+	= 8108 - 1638.4 + 16.8 - 2R + 0.4R
+	= 6486.4 - 1.6R
+	= 6486.4 - 2R
+
+
+3.
+	 CUSTOMERID	NUMBER(10)	10/2+1= 6bytes
+	 
+
+	Average row size = 6 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+6 = 10+1+0+6 = 17
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((6486.4 - 2R) * rows/block)/17
+	17R rows/block = (6486.4 - 2R) * rows/block)
+	19R rows/block = 6486.4 rows/block
+	R = 6486.4/19
+	R = 341.38 rows/block
+	R = 341 rows/block taking the floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 341 rows/block
+	2.93 blocks
+	3 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+-----------------------------------------------------------------------------------------------
+
+			3. pk_productid  primary key (PRODUCTID)
+
+
+-----------------------------------------------------------------------------------------------
+
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+
+3.
+	 PRODUCTID 		NUMBER(10)	10/2+1=6bytes
+	 
+
+	Average row size = 6 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+6 = 10+1+0+6 = 17
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/17
+	17R rows/block = (7702-2R) * rows/block)
+	19R rows/block = 7702 rows/block
+	R = 7702/19
+	R = 405.36 rows/block
+	R = 405 rows/block taking th floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 405 rows/block
+	2.469 blocks
+	3 blocks	taking the ceil
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+
+--------------------------------------------------------------------------------------------
+
+			4. constraint pk_orderid  primary key (ORDERID)
+
+
+--------------------------------------------------------------------------------------------
+
+
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+
+3.
+	 ORDERID		NUMBER(10)	10/2+1 = 6 bytes
+	 
+
+	Average row size = 6 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+6 = 10+1+0+6 = 17
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/17
+	17R rows/block = (7702-2R) * rows/block)
+	19R rows/block = 7702 rows/block
+	R = 7702/19
+	R = 405.36 rows/block
+	R = 405 rows/block taking th floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 405 rows/block
+	2.469 blocks
+	3 blocks	taking the ceil
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+
+------------------------------------------------------------------------------------------
+
+			5. pk_order_item primary key(ORDERID,PRODUCTID)
+
+------------------------------------------------------------------------------------------
+
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table.pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+3.
+
+	 ORDERID	NUMBER(10)	10/2+1=6bytes
+	 PRODUCTID	NUMBER(10)	10/2+1=6bytes
+	 
+	Average row size = 12 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*2)+(3*0)+12 = 10+2+0+12 = 24
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/24
+	24R rows/block = (7702-2R) * rows/block)
+	26R rows/block = 7702 rows/block
+	R = 7702/26
+	R = 296.23 rows/block
+	R = 296 rows/block
+
+6. Number of blocks required for 0rder table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 296 rows/block
+	3.37 blocks
+	4 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+--------------------------------------------------------------------------------------------
+
+			6. pk_paymentid  primary key (PAYMENTID)
+
+
+--------------------------------------------------------------------------------------------
+
+
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 20
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(20/100))
+	= (8192 - (84+2R)) - ((8192- (84+2R))*0.2)
+	= 8192 - 84 - 2R - 8192*0.2 + (84 + 2R) * 0.2
+	= 8108 - 2R - 1638.4 + 16.8 + 0.4R
+	= 8108 - 1638.4 + 16.8 - 2R + 0.4R
+	= 6486.4 - 1.6R
+	= 6486.4 - 2R
+
+
+3.
+	 PAYMENTID		NUMBER(10)	10/2+1=6bytes
+	 
+
+	Average row size = 6 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+6 = 10+1+0+6 = 17
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((6486.4 - 2R) * rows/block)/17
+	17R rows/block = (6486.4 - 2R) * rows/block)
+	19R rows/block = 6486.4 rows/block
+	R = 6486.4/19
+	R = 341.38 rows/block
+	R = 341 rows/block taking the floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 341 rows/block
+	2.93 blocks
+	3 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+----------------------------------------------------------------------------------------
+
+			fk_zip on CUSTOMER (ZIPCODE)
+
+----------------------------------------------------------------------------------------
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 20
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(20/100))
+	= (8192 - (84+2R)) - ((8192- (84+2R))*0.2)
+	= 8192 - 84 - 2R - 8192*0.2 + (84 + 2R) * 0.2
+	= 8108 - 2R - 1638.4 + 16.8 + 0.4R
+	= 8108 - 1638.4 + 16.8 - 2R + 0.4R
+	= 6486.4 - 1.6R
+	= 6486.4 - 2R
+
+
+3.
+	 ZIPCODE	CHAR(10)	=10bytes
+
+	Average row size = 10 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+S0
+	10+(1*1)+(3*0)+10 = 10+1+0+10 = 21
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((6486.4 - 2R) * rows/block)/21
+	21R rows/block = (6486.4 - 2R) * rows/block)
+	23R rows/block = 6486.4 rows/block
+	R = 6486.4/23
+	R = 282.01 rows/block
+	R = 282 rows/block taking the floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 282 rows/block
+	3.54 blocks
+	4 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+----------------------------------------------------------------------------------------
+
+			index  fk_customerid on ORDERS (CUSTOMERID)
+
+----------------------------------------------------------------------------------------
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+
+3.
+	 CUSTOMERID		NUMBER(10)	10/2+1	6bytes
+	 
+	Average row size = 6 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+6 = 10+1+0+6 = 17
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/17
+	17R rows/block = (7702-2R) * rows/block)
+	19R rows/block = 7702 rows/block
+	R = 7702/19
+	R = 405.36 rows/block
+	R = 405 rows/block taking th floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 405 rows/block
+	2.469 blocks
+	3 blocks	taking the ceil
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+----------------------------------------------------------------------------------------
+
+			 index  fk_order_id1 on ORDER_ITEM (ORDERID)
+
+----------------------------------------------------------------------------------------
+
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table.pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+3.
+
+	 ORDERID	NUMBER(10)	10/2+1=6bytes
+	 
+	Average row size = 6 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+6 = 10+1+0+6 = 17
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/17
+	17R rows/block = (7702-2R) * rows/block)
+	19R rows/block = 7702 rows/block
+	R = 7702/19
+	R = 405.36 rows/block
+	R = 405 rows/block taking th floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 405 rows/block
+	2.469 blocks
+	3 blocks	taking the ceil
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+----------------------------------------------------------------------------------------
+
+			 index  fk_product_id on ORDER_ITEM (PRODUCTID)
+
+
+----------------------------------------------------------------------------------------
+
+
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table.pctfree = 5
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(5/100))
+	= 8192 - 84 - 2R - 8192*0.05 + (84 + 2R) * 0.05
+	= 8108 - 2R - 409.6 + 4.2 + 0.1R
+	= 8108 - 409.6 + 4.2 - 2R + 0.1R
+	= 7702 - 1.9R
+	= 7702 - 2R
+
+3.
+
+	 PRODUCTID	NUMBER(10)	10/2+1=6bytes
+	 
+	Average row size = 6 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+6 = 10+1+0+6 = 17
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((7702-2R) * rows/block)/17
+	17R rows/block = (7702-2R) * rows/block)
+	19R rows/block = 7702 rows/block
+	R = 7702/19
+	R = 405.36 rows/block
+	R = 405 rows/block taking th floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 405 rows/block
+	2.469 blocks
+	3 blocks	taking the ceil
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+
+----------------------------------------------------------------------------------------
+
+			index  fk_order_id2 on PAYMENT (ORDERID)
+
+----------------------------------------------------------------------------------------
+
+
+1.  Header  = 80 + (4 + 2R)
+
+2.  Data Space for a table. pctfree = 20
+	= (8192 - (84+2R)) - ((8192- (84+2R))*(20/100))
+	= (8192 - (84+2R)) - ((8192- (84+2R))*0.2)
+	= 8192 - 84 - 2R - 8192*0.2 + (84 + 2R) * 0.2
+	= 8108 - 2R - 1638.4 + 16.8 + 0.4R
+	= 8108 - 1638.4 + 16.8 - 2R + 0.4R
+	= 6486.4 - 1.6R
+	= 6486.4 - 2R
+
+
+3.
+	 ORDERID		NUMBER(10)	10/2+1=6bytes
+	 
+
+	Average row size = 6 bytes
+
+4.  Average row size with overhead.
+
+	row ID = 10 for non clustered
+so
+	10+(1*1)+(3*0)+6 = 10+1+0+6 = 17
+
+5.  Average number of rows on each data block
+
+	available space / average row size
+
+	R rows/block = ((6486.4 - 2R) * rows/block)/17
+	17R rows/block = (6486.4 - 2R) * rows/block)
+	19R rows/block = 6486.4 rows/block
+	R = 6486.4/19
+	R = 341.38 rows/block
+	R = 341 rows/block taking the floor
+
+6. Number of blocks required for customer table. Here the number of rows is 1,000.
+	# of rows/ R rows/block
+	1,000 rows/ 341 rows/block
+	2.93 blocks
+	3 blocks
+Since Oracle allocates space in multiples of 5 blocks. Thus the amount of space customer table takes is 5
+
+Number of bytes = # of blocks*8192 bytes
+	= 5 * 8192 bytes
+	= 40960 bytes
+	= 40960/1024 k bytes
+	= 40k
+
+You can increase a little bit 50k if you do not know the exact number of data.
+
+
+---------------------------------------------------------------------------------------
+
+			Tablespace sizing
+
+---------------------------------------------------------------------------------------
+1.	TABLESPACE "USER_DATA1"
+
+The objects on USER_DATA1 
+
+ZIP 1240k
+CUSTOMER 120k
+ORDER 100k
+
+SIZE= 1240k + 120k + 100k = 1460K
+
+You can increase a little bit 1500k if you do not know the exact number of data.
+
+2.	TABLESPACE "USER_DATA2"
+
+The objects on USER_DATA1
+
+ZIP 1240k
+PRODUCT 150k
+ORDER_ITEM 50k
+PAYMENT 100K 
+
+SIZE= 1240k + 150k + 50k + 100K= 1540K
+
+You can increase a little bit 2000k if you do not know the exact number of data.
+
+
+TABLESPACE "USER_INDX1"
+
+pk_zip  	1000K
+pk_customer_id 	50K
+pk_productid  	50K
+pk_orderid  	50K
+pk_order_item 	50K
+pk_paymentid  	50K
+fk_zip 		50K
+fk_customerid	50K
+fk_order_id1	50K
+fk_product_id	50K
+fk_order_id2	50K
+
+size = 1000K + 50K + 50K + 50K + 50K + 50K + 50K + 50K + 50K + 50K + 50K = 1500k
+
+You can increase a little bit 2000k if you do not know the exact number of data.

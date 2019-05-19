@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK_STORE_ZIP" directorySegmentName="seg_0" id="95B4805C-EC91-1FF9-17FD-8B70F12F0D7D">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:03:00 UTC</createdTime>
+<generatorID>71260E48-15ED-59AE-A442-AC60622A948D</generatorID>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<engineerTo>
+<item key="34C44977-6948-0E86-3F0C-FA60F2BAC892" value="true"/>
+</engineerTo>
+<sourcePk>48CA6FD4-C592-5776-3F67-E23F94D01588</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>2CD6DD19-5251-BF94-41BE-44D827BB3F44</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>6034FB67-C8BD-F5C3-224C-D931439274C4</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

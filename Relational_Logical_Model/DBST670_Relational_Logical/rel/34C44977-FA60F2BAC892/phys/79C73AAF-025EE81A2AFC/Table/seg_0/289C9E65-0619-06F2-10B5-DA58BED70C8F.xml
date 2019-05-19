@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="PAYMENT" directorySegmentName="seg_0" id="289C9E65-0619-06F2-10B5-DA58BED70C8F">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>FD1996E4-8B34-3457-A476-C169549656F9</segment>
+<tableSpace>B7546351-C0FB-5803-A673-EC555DAB2DD9</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CARD_NUMBER" id="0E3ABC3B-4FCA-A07C-43A7-0DD23D2EF6C8">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PAYMENT_AMOUNT" id="27D12427-08B3-F934-00EB-398A795907F5">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ORDERID" id="8FC5C685-FD94-398F-4E01-430ECA82E70E">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PAYMENTID" id="9BC7BC19-C75B-CFBA-06E3-2D25A9EAC1FF">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PAYMENT_METHOD" id="AF3C7B07-FB6E-3EDC-F23D-AE8AFDEB8852">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CARD_EXP_DATE" id="F5534A89-A153-D8B4-75C0-BD09A0DE276F">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_PAYMENTID" id="1484915F-4A5C-8A33-0C62-8B01DB121490">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<segment>06E316A4-FE4A-354C-B49F-19B8074D73F6</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="FK_ORDER_ID2" id="75837106-5D50-3A0C-A632-4BDCB047B8C1">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<segment>06E316A4-FE4A-354C-B49F-19B8074D73F6</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_ORDER_ID2" id="637C9C81-9231-0288-C261-FEC4116BE80D">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_PAYMENTID" id="B311A1E1-A968-35C2-B167-AFBD9ECAF1F0">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<segment>06E316A4-FE4A-354C-B49F-19B8074D73F6</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+<existingIndex>1484915F-4A5C-8A33-0C62-8B01DB121490</existingIndex>
+<indexSegment>06E316A4-FE4A-354C-B49F-19B8074D73F6</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

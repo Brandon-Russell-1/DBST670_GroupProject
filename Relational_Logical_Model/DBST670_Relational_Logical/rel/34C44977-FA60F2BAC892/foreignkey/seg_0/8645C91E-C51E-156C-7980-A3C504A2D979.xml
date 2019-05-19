@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8645C91E-C51E-156C-7980-A3C504A2D979" containerWithKeyObject="E98E5C23-1306-F9DC-B425-432C4924E6A8" localFKIndex="9DD4534C-D35C-91B1-4143-078184FC7382" name="FK_PRODCATID">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>FK_PRODCATID</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<referredTableLongName>DATADESIGNLEADUSER.PRODUCT_CAT</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>AB6EB4CF-BFE7-9B08-4E7E-325B5E3EFE86</referredTableID>
+<keyObject>88042742-2340-41B2-76C9-E22B67C13BFD</keyObject>
+<referredKeyID>88042742-2340-41B2-76C9-E22B67C13BFD</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>PRODCATID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

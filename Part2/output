@@ -1,0 +1,464 @@
+SQL> 
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> /*---------------------------------------------------*/
+SQL> /*     Generate Read and Work Loads for Lab 10/11    */
+SQL> /*---------------------------------------------------*/
+SQL> 
+SQL> SHOW USER;
+USER is "DATADESIGNLEADUSER"
+SQL> 
+SQL> CONNECT sys/sysdba as SYSDBA;
+Connected.
+SQL> 
+SQL> SHOW USER;
+USER is "SYS"
+SQL> 
+SQL> /*Create Database statistics snapshot*/
+SQL> 
+SQL> exec dbms_workload_repository.create_snapshot();
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> /*Generate ADDM report - Run from SQLPlus as SYS*/
+SQL> set long 1000000;
+SQL> set pagesize 50000;
+SQL> column get_clob format a80;
+SQL> select dbms_advisor.get_task_report(
+  2  task_name, 'TEXT', 'ALL') 
+  3  as ADDM_report
+  4  from dba_advisor_tasks
+  5  where task_id=(
+  6  select max(t.task_id)
+  7  from dba_advisor_tasks t,dba_advisor_log l
+  8  where t.task_id = l.task_id
+  9  and t.advisor_name='ADDM'
+ 10  and l.status= 'COMPLETED');
+
+ADDM_REPORT                                                                     
+--------------------------------------------------------------------------------
+          ADDM Report for Task 'ADDM:875249898_1_1446'
+          --------------------------------------------
+ 
+Analysis Period
+---------------
+AWR snapshot range from 1445 to 1446.
+Time period starts at 05-APR-19 01.15.04 PM
+Time period ends at 05-APR-19 01.33.55 PM
+ 
+Analysis Target
+---------------
+Database 'DBST670' with DB ID 875249898.
+Database version 12.2.0.1.0.
+ADDM performed an analysis of instance DBST670, numbered 1 and hosted at 
+localhost.localdomain.
+ 
+Activity During the Analysis Period
+-----------------------------------
+Total database time was 2467 seconds.
+The average number of active sessions was 2.18.
+ 
+Summary of Findings
+-------------------
+   Description                          Active Sessions      Recommendations
+                                        Percent of Activity   
+   -----------------------------------  -------------------  ---------------
+1  Sequence Usage                       1.06 | 48.72         1
+2  Top SQL Statements                   1.06 | 48.57         2
+3  Slow Archivers                       1 | 45.81            2
+4  Unusual "Configuration" Wait Event   .69 | 31.8           3
+5  Unusual "Administrative" Wait Event  .06 | 2.92           2
+ 
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ 
+          Findings and Recommendations
+          ----------------------------
+ 
+Finding 1: Sequence Usage
+Impact is 1.06 active sessions, 48.72% of total activity.
+---------------------------------------------------------
+Sequence cache misses were consuming significant database time.
+ 
+   Recommendation 1: Application Analysis
+   Estimated benefit is 1.06 active sessions, 48.72% of total activity.
+   --------------------------------------------------------------------
+   Action
+      Investigate application or look at top SQL to find hot sequences. Use a 
+      larger cache size for those sequences. Try avoiding the use of the ORDER 
+      setting if running RAC.
+ 
+ 
+Finding 2: Top SQL Statements
+Impact is 1.06 active sessions, 48.57% of total activity.
+---------------------------------------------------------
+SQL statements consuming significant database time were found. These 
+statements offer a good opportunity for performance improvement.
+ 
+   Recommendation 1: SQL Tuning
+   Estimated benefit is .62 active sessions, 28.57% of total activity.
+   -------------------------------------------------------------------
+   Action
+      Investigate the DELETE statement with SQL_ID "dvk3xq859zsb6" for 
+      possible performance improvements. You can supplement the information 
+      given here with an ASH report for this SQL_ID.
+      Related Object
+         SQL statement with SQL_ID dvk3xq859zsb6.
+         DELETE FROM REGIONBACKUP WHERE REGIONID = :B1 
+   Rationale
+      The SQL spent only 1% of its database time on CPU, I/O and Cluster 
+      waits. Therefore, the SQL Tuning Advisor is not applicable in this case. 
+      Look at performance data for the SQL to find potential improvements.
+   Rationale
+      Database time for this SQL was divided as follows: 100% for SQL 
+      execution, 0% for parsing, 0% for PL/SQL execution and 0% for Java 
+      execution.
+   Rationale
+      Waiting for event "log file switch (archiving needed)" in wait class 
+      "Configuration" accounted for 95% of the database time spent in 
+      processing the SQL statement with SQL_ID "dvk3xq859zsb6".
+   Rationale
+      Top level calls to execute the PL/SQL statement with SQL_ID 
+      "a8c4tzpybxwj6" are responsible for 100% of the database time spent on 
+      the DELETE statement with SQL_ID "dvk3xq859zsb6".
+      Related Object
+         SQL statement with SQL_ID a8c4tzpybxwj6.
+         
+ 
+   Recommendation 2: SQL Tuning
+   Estimated benefit is .44 active sessions, 20% of total activity.
+   ----------------------------------------------------------------
+   Action
+      Investigate the UPDATE statement with SQL_ID "4m7m0t6fjcs5x" for 
+      possible performance improvements. You can supplement the information 
+      given here with an ASH report for this SQL_ID.
+      Related Object
+         SQL statement with SQL_ID 4m7m0t6fjcs5x.
+         update seq$ set increment$=:2,minvalue=:3,maxvalue=:4,cycle#=:5,order
+         $=:6,cache=:7,highwater=:8,audit$=:9,flags=:10 where obj#=:1
+   Rationale
+      The SQL spent only 0% of its database time on CPU, I/O and Cluster 
+      waits. Therefore, the SQL Tuning Advisor is not applicable in this case. 
+      Look at performance data for the SQL to find potential improvements.
+   Rationale
+      Database time for this SQL was divided as follows: 100% for SQL 
+      execution, 0% for parsing, 0% for PL/SQL execution and 0% for Java 
+      execution.
+   Rationale
+      Waiting for event "log file switch (archiving needed)" in wait class 
+      "Configuration" accounted for 100% of the database time spent in 
+      processing the SQL statement with SQL_ID "4m7m0t6fjcs5x".
+ 
+ 
+Finding 3: Slow Archivers
+Impact is 1 active sessions, 45.81% of total activity.
+------------------------------------------------------
+Archiver processes were unable to keep up with redo generation.
+This problem can be caused by use of hot backup mode on tablespaces.  DML to 
+tablespaces in hot backup mode causes generation of additional redo, thereby 
+increasing the work of archiver processes.
+ 
+   Recommendation 1: Host Configuration
+   Estimated benefit is 1 active sessions, 45.81% of total activity.
+   -----------------------------------------------------------------
+   Action
+      Investigate the file I/O throughput of the archiver process(es) to make 
+      sure it is appropriate for the underlying hardware.
+   Rationale
+      The archiver's I/O throughput was 0 K per second on redo log files and 0 
+      K per second on archive and archive backup log files.
+   Rationale
+      The total I/O throughput on redo log files was 5.1 M per second and the 
+      archiver was responsible for 0% of it.
+ 
+   Recommendation 2: Database Configuration
+   Estimated benefit is 1 active sessions, 45.81% of total activity.
+   -----------------------------------------------------------------
+   Action
+      Consider adding more archiver processes by setting the value of 
+      parameter "log_archive_max_processes".
+   Rationale
+      The value of parameter "log_archive_max_processes" was "4" during the 
+      analysis period.
+ 
+   Symptoms That Led to the Finding:
+   ---------------------------------
+      Wait class "Configuration" was consuming significant database time.
+      Impact is 1.71 active sessions, 78.25% of total activity.
+ 
+ 
+Finding 4: Unusual "Configuration" Wait Event
+Impact is .69 active sessions, 31.8% of total activity.
+-------------------------------------------------------
+Wait event "enq: SQ - contention" in wait class "Configuration" was consuming 
+significant database time.
+ 
+   Recommendation 1: Application Analysis
+   Estimated benefit is .69 active sessions, 31.8% of total activity.
+   ------------------------------------------------------------------
+   Action
+      Investigate the cause for high "enq: SQ - contention" waits. Refer to 
+      Oracle's "Database Reference" for the description of this wait event.
+ 
+   Recommendation 2: Application Analysis
+   Estimated benefit is .69 active sessions, 31.8% of total activity.
+   ------------------------------------------------------------------
+   Action
+      Investigate the cause for high "enq: SQ - contention" waits in Service 
+      "SYS$USERS".
+ 
+   Recommendation 3: Application Analysis
+   Estimated benefit is .69 active sessions, 31.8% of total activity.
+   ------------------------------------------------------------------
+   Action
+      Investigate the cause for high "enq: SQ - contention" waits with P1 
+      ("name|mode") value "1397817350" and P2 ("object #") value "8912".
+ 
+   Symptoms That Led to the Finding:
+   ---------------------------------
+      Wait class "Configuration" was consuming significant database time.
+      Impact is 1.71 active sessions, 78.25% of total activity.
+ 
+ 
+Finding 5: Unusual "Administrative" Wait Event
+Impact is .06 active sessions, 2.92% of total activity.
+-------------------------------------------------------
+Wait event "JS kgl get object wait" in wait class "Administrative" was 
+consuming significant database time.
+ 
+   Recommendation 1: Application Analysis
+   Estimated benefit is .06 active sessions, 2.92% of total activity.
+   ------------------------------------------------------------------
+   Action
+      Investigate the cause for high "JS kgl get object wait" waits. Refer to 
+      Oracle's "Database Reference" for the description of this wait event.
+ 
+   Recommendation 2: Application Analysis
+   Estimated benefit is .06 active sessions, 2.92% of total activity.
+   ------------------------------------------------------------------
+   Action
+      Investigate the cause for high "JS kgl get object wait" waits in Service 
+      "SYS$USERS".
+ 
+   Symptoms That Led to the Finding:
+   ---------------------------------
+      Wait class "Administrative" was consuming significant database time.
+      Impact is .06 active sessions, 2.92% of total activity.
+ 
+ 
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+          Additional Information
+          ----------------------
+ 
+Miscellaneous Information
+-------------------------
+Wait class "Application" was not consuming significant database time.
+Wait class "Commit" was not consuming significant database time.
+Wait class "Concurrency" was not consuming significant database time.
+CPU was not a bottleneck for the instance.
+Wait class "Network" was not consuming significant database time.
+Wait class "User I/O" was not consuming significant database time.
+Session connect and disconnect calls were not consuming significant database 
+time.
+Hard parsing of SQL statements was not consuming significant database time.
+ 
+
+SQL> 
+SQL> 
+SQL> /*Write Load*/
+SQL> 
+SQL> /*Drop/Create region backup table*/
+SQL> DROP TABLE regionbackup;
+
+Table REGIONBACKUP dropped.
+
+SQL> 
+SQL> CREATE TABLE regionbackup (
+  2      regionid      NUMBER(10) NOT NULL,
+  3      regionname    VARCHAR(25),
+  4      description   VARCHAR(150),
+  5      CONSTRAINT pk_region PRIMARY KEY ( regionid )
+  6          USING INDEX TABLESPACE user_indx1
+  7              STORAGE ( INITIAL 50 K NEXT 10 K )
+  8  )
+  9  PCTFREE 5 PCTUSED 90 TABLESPACE user_data1
+ 10      STORAGE ( INITIAL 192 k NEXT 20 k MAXEXTENTS UNLIMITED PCTINCREASE 0 );
+
+Table REGIONBACKUP created.
+
+SQL> 
+SQL> /*Insert current data*/
+SQL> INSERT INTO regionbackup SELECT * FROM DataDesignLeadUser.region;
+
+1,000 rows inserted.
+
+SQL> 
+SQL> 
+SQL> /*Create loop to insert from 1,001 to 1,000,000 additional rows*/
+SQL> BEGIN
+  2      FOR v_LoopCounter IN 1001..1000000 LOOP
+  3          INSERT INTO REGIONBACKUP (regionid,regionname, description)
+  4          VALUES (v_LoopCounter, 'name', 'description');
+  5          END LOOP;
+  6      END;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+SQL> /*Verify data is there*/
+SQL> 
+SQL> /*SELECT * FROM REGIONBACKUP;*/
+SQL> 
+SQL> /*Run loop to delete each record individually*/
+SQL> declare
+  2    i number := 1;
+  3    cursor s1 is SELECT rowid, r.* FROM REGIONBACKUP r;
+  4  begin
+  5    for c1 in s1 loop
+  6        DELETE FROM REGIONBACKUP 
+  7               WHERE regionid = i;
+  8        i := i + 1;             
+  9    end loop;
+ 10    commit;
+ 11  end;
+ 12  /
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> /*Verify data is Gone*/
+SQL> SELECT * FROM REGIONBACKUP;
+no rows selected
+SQL> 
+SQL> /*Do it again!*/
+SQL> 
+SQL> /*Drop/Create region backup table*/
+SQL> DROP TABLE regionbackup;
+
+Table REGIONBACKUP dropped.
+
+SQL> 
+SQL> CREATE TABLE regionbackup (
+  2      regionid      NUMBER(10) NOT NULL,
+  3      regionname    VARCHAR(25),
+  4      description   VARCHAR(150),
+  5      CONSTRAINT pk_region PRIMARY KEY ( regionid )
+  6          USING INDEX TABLESPACE user_indx1
+  7              STORAGE ( INITIAL 50 K NEXT 10 K )
+  8  )
+  9  PCTFREE 5 PCTUSED 90 TABLESPACE user_data1
+ 10      STORAGE ( INITIAL 192 k NEXT 20 k MAXEXTENTS UNLIMITED PCTINCREASE 0 );
+
+Table REGIONBACKUP created.
+
+SQL> 
+SQL> /*Insert current data*/
+SQL> INSERT INTO regionbackup SELECT * FROM DataDesignLeadUser.region;
+
+1,000 rows inserted.
+
+SQL> 
+SQL> /*Create loop to insert from 1,001 to 1,000,000 additional rows*/
+SQL> BEGIN
+  2      FOR v_LoopCounter IN 1001..1000000 LOOP
+  3          INSERT INTO REGIONBACKUP (regionid,regionname, description)
+  4          VALUES (v_LoopCounter, 'name', 'description');
+  5          END LOOP;
+  6      END;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+SQL> /*Verify data is there*/
+SQL> /*SELECT * FROM REGIONBACKUP;*/
+SQL> 
+SQL> /*Run loop to delete each record individually*/
+SQL> declare
+  2    i number := 1;
+  3    cursor s1 is SELECT rowid, r.* FROM REGIONBACKUP r;
+  4  begin
+  5    for c1 in s1 loop
+  6        DELETE FROM REGIONBACKUP 
+  7               WHERE regionid = i;
+  8        i := i + 1;             
+  9    end loop;
+ 10    commit;
+ 11  end;
+ 12  /
+
+PL/SQL procedure successfully completed.
+
+SQL> /*Verify data is Gone*/
+SQL> SELECT * FROM REGIONBACKUP;
+no rows selected
+SQL> 
+SQL> 
+SQL> /*Create Database statistics snapshot*/
+SQL> 
+SQL> exec dbms_workload_repository.create_snapshot();
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> /*Generate ADDM report - Run from SQLPlus as SYS*/
+SQL> set long 1000000;
+SQL> set pagesize 50000;
+SQL> column get_clob format a80;
+SQL> select dbms_advisor.get_task_report(
+  2  task_name, 'TEXT', 'ALL') 
+  3  as ADDM_report
+  4  from dba_advisor_tasks
+  5  where task_id=(
+  6  select max(t.task_id)
+  7  from dba_advisor_tasks t,dba_advisor_log l
+  8  where t.task_id = l.task_id
+  9  and t.advisor_name='ADDM'
+ 10  and l.status= 'COMPLETED');
+
+ADDM_REPORT                                                                     
+--------------------------------------------------------------------------------
+          ADDM Report for Task 'ADDM:875249898_1_1447'
+          --------------------------------------------
+ 
+Analysis Period
+---------------
+AWR snapshot range from 1446 to 1447.
+Time period starts at 05-APR-19 01.33.55 PM
+Time period ends at 05-APR-19 01.35.46 PM
+ 
+Analysis Target
+---------------
+Database 'DBST670' with DB ID 875249898.
+Database version 12.2.0.1.0.
+ADDM performed an analysis of instance DBST670, numbered 1 and hosted at 
+localhost.localdomain.
+ 
+Activity During the Analysis Period
+-----------------------------------
+Total database time was 99 seconds.
+The average number of active sessions was .89.
+ 
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+There are no findings to report.
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+          Additional Information
+          ----------------------
+ 
+Miscellaneous Information
+-------------------------
+There was no significant database activity to run the ADDM.
+ 
+
+Connection created by CONNECT script command disconnected

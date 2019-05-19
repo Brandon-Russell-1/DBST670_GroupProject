@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E20674DA-F1F4-AC90-A03D-A38A1EA204F9" containerWithKeyObject="30D61477-133F-F91B-6662-C78B3D720AAC" localFKIndex="407F79EF-0B9F-52C9-05B5-3F07609FDFCA" name="FK_EMP_SSN">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>FK_EMP_SSN</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<referredTableLongName>DATADESIGNLEADUSER.EMPLOYEE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2A31A4F4-D234-79E3-A27C-A8781914A2DC</referredTableID>
+<keyObject>75B0D775-7A53-0791-FA8F-542BE144F5A1</keyObject>
+<referredKeyID>75B0D775-7A53-0791-FA8F-542BE144F5A1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>SALES_EMP_SSN</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

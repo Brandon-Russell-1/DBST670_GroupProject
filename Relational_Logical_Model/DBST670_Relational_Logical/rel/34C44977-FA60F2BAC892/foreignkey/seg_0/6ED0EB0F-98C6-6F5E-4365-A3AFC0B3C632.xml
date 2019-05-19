@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="6ED0EB0F-98C6-6F5E-4365-A3AFC0B3C632" containerWithKeyObject="30D61477-133F-F91B-6662-C78B3D720AAC" localFKIndex="E742DD5B-1473-F2D6-86C2-99B17FE99454" name="FK_CUSTOMERID">
+<sourceConnName>DataDesignLeadUser_DBST670</sourceConnName>
+<sourceObjSchema>DATADESIGNLEADUSER</sourceObjSchema>
+<sourceObjName>FK_CUSTOMERID</sourceObjName>
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<referredTableLongName>DATADESIGNLEADUSER.CUSTOMER</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>42564B35-CECD-E366-289A-0DEB2C9D725B</referredTableID>
+<keyObject>DDAFEDFF-DE4F-B922-4646-A8020FEB9FEF</keyObject>
+<referredKeyID>DDAFEDFF-DE4F-B922-4646-A8020FEB9FEF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CUSTOMERID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

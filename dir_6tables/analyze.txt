@@ -1,0 +1,22 @@
+-------------------------------------------------------
+
+		Analyze command
+
+------------------------------------------------------
+
+
+Analyze commands are run after the data is loaded.
+
+analyze table zip compute statistics;
+
+analyze table customer compute statistics;
+
+analyze table orders compute statistics;
+
+analyze table product compute statistics;
+
+analyze table order_item compute statistics;
+
+analyze table payment compute statistics;
+
+select table_name, num_rows from user_tables;

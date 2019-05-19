@@ -1,0 +1,16 @@
+
+TABLESPACE "USER_DATA1" created.
+
+
+TABLESPACE "USER_DATA2" created.
+
+
+Error starting at line : 11 in command -
+CREATE TABLESPACE "USER_INDX1" LOGGING
+DATAFILE '/u01/app/oracle/oradata/DBST670/user_indx01.dbf' SIZE 2000K REUSE
+AUTOEXTEND ON NEXT 640K MAXSIZE UNLIMITED EXTENT MANAGEMENT LOCAL
+Error report -
+ORA-01543: tablespace 'USER_INDX1' already exists
+01543. 00000 -  "tablespace '%s' already exists"
+*Cause:    Tried to create a tablespace which already exists
+*Action:   Use a different name for the new tablespace

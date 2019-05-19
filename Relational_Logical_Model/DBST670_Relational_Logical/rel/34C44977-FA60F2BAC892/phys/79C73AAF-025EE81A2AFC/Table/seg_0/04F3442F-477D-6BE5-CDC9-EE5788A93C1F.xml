@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="ZIP" directorySegmentName="seg_0" id="04F3442F-477D-6BE5-CDC9-EE5788A93C1F">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<logging>YES</logging>
+<partitionList class="oracle.dbtools.crest.model.design.storage.oracle.v11g.PartitionListOraclev11g" name="PL1" id="E9E80A38-F3DB-0642-A45F-F438F5CDAE0B">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<columnIDs>E7A5E31B-32AB-88EE-F2DA-4448CBBAD11E</columnIDs>
+</partitionList>
+<partitioned>YES</partitioned>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>A20D78AE-E500-807A-4660-15DAB7D4F844</segment>
+<tableSpace>D45D5B8C-C1F7-B617-BFB8-2E81696C053B</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CITY" id="D4FF9046-97A6-1D75-ED15-D51FA36E62A7">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ZIPCODE" id="DA922DD0-7325-B69E-A621-D779BED5A15A">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STATE" id="E7A5E31B-32AB-88EE-F2DA-4448CBBAD11E">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_ZIP" id="B9318C4C-DBA9-49ED-87F6-7E47F38137C3">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<segment>21132BAF-F969-8B9A-506B-14F0F7F06A24</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_ZIP" id="0A9E0B43-BD51-62D8-AF0C-9EBD0A6019F3">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<segment>21132BAF-F969-8B9A-506B-14F0F7F06A24</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+<existingIndex>B9318C4C-DBA9-49ED-87F6-7E47F38137C3</existingIndex>
+<indexSegment>21132BAF-F969-8B9A-506B-14F0F7F06A24</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

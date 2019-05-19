@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="EMPLOYEE" directorySegmentName="seg_0" id="2A31A4F4-D234-79E3-A27C-A8781914A2DC">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:15 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>67846AC1-4DAF-3FED-1603-34EF3AE58201</segment>
+<tableSpace>D45D5B8C-C1F7-B617-BFB8-2E81696C053B</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PHONENO" id="089614DC-2105-7CA1-E6DB-A93AEBEC48BE">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LASTNAME" id="0D287148-81AB-AE6A-661B-89FC46DDF4DE">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FIRSTNAME" id="256E37E4-271A-C3E0-8CBB-56A825CF4CEF">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ADDRESS" id="2A6B8B42-B9F0-E043-27B4-FFDCD083F86B">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STOREID" id="339BF4F2-A824-EA78-A0F4-73B872733AA8">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ZIPCODE" id="B192F378-0257-8E4E-BA4C-FF932EB2AACE">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SALES_EMP_SSN" id="E0B5DC12-6B50-966E-F161-C1EAEC2EE55B">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:16 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_SALES_EMP_SSN" id="3FA0DE99-FC6C-5960-0262-BB9B3A617DEB">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<segment>06E316A4-FE4A-354C-B49F-19B8074D73F6</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="FK_EMP_STOREID" id="DBD4828E-3F3D-BC88-A9D1-971BDFE65A88">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<segment>06E316A4-FE4A-354C-B49F-19B8074D73F6</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="FK_EMP_ZIP" id="EC21511A-68E4-6E44-5E03-2724AD0A0D76">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<schemaObject>60EA8805-1472-4785-EA94-E6B7DDE0973F</schemaObject>
+<segment>06E316A4-FE4A-354C-B49F-19B8074D73F6</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_EMP_ZIP" id="77C9AFBE-E625-A2A0-6160-BD34F4C526C1">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_EMP_STOREID" id="C4C21845-C01B-DCAD-FD20-02E8624E15DA">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:18 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_SALES_EMP_SSN" id="75B0D775-7A53-0791-FA8F-542BE144F5A1">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 23:00:17 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<segment>06E316A4-FE4A-354C-B49F-19B8074D73F6</segment>
+<tableSpace>44307CEF-AD83-3B3D-3EC3-9F4BF5FE8B6A</tableSpace>
+<existingIndex>3FA0DE99-FC6C-5960-0262-BB9B3A617DEB</existingIndex>
+<indexSegment>06E316A4-FE4A-354C-B49F-19B8074D73F6</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

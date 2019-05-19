@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="DBST670_Relational_Logical" id="C350C77E-E6E6-C1FB-E229-B6C47366E4A1" version="3.5">
+<createdBy>rbran</createdBy>
+<createdTime>2019-03-09 15:10:41 UTC</createdTime>
+<ownerDesignName>DBST670_Relational_Logical</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>C350C77E-E6E6-C1FB-E229-B6C47366E4A1</designId>
+</OSDM_Design>

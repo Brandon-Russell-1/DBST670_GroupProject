@@ -1,0 +1,158 @@
+The following exerpts are from ask Tom on how to calculate the size of the index.
+
+Is there anyway that we can calculate/predict space for index. i know there are few methods to estimate space for table growth. Like that, do we have any method or atleast workaround to estimate space for all indexes created for the table.
+
+Answer 
+Not with any accuracy.  Here is why.
+
+Not only do you need to know how big your index entries are (hard/impossible 
+with varchars and numbers as they are varying length fields) but you need to 
+know how your index is modified.
+
+Lets say you only insert and update in this index.  Well, your index could end 
+up being many times larger then it would be if you rebuilt it.  The reason is 
+that if you update a value -- the position it was in is "still there" in the 
+index structure.  We can reuse it -- but it depends on how you use the data.  
+For example:
+
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> create table t ( x varchar2(1) );
+Table created.
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> create index t_idx on t(x);
+Index created.
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> insert into t values ( 'a' );
+ops$tkyte@ORA817DEV.US.ORACLE.COM> insert into t values ( 'b' );
+ops$tkyte@ORA817DEV.US.ORACLE.COM> insert into t values ( 'd' );
+ops$tkyte@ORA817DEV.US.ORACLE.COM> commit;
+Commit complete.
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> update t set x = 'e' where x = 'b';
+1 row updated.
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> commit;
+Commit complete.
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> analyze index t_idx validate structure;
+Index analyzed.
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> select lf_rows, del_lf_rows from index_stats;
+
+   LF_ROWS DEL_LF_ROWS
+---------- -----------
+         4           1
+
+that shows that there are 4 entries in the index -- but one of them is 
+"deleted".  There is a hole between 'a' and 'd' in the index.  If we put in some 
+data that fits there (note: it does not have to be the SAME data -- just has to 
+fall between 'a' and 'd'):
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> insert into t values ( 'c' );
+1 row created.
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> analyze index t_idx validate structure;
+Index analyzed.
+
+ops$tkyte@ORA817DEV.US.ORACLE.COM> select lf_rows, del_lf_rows from index_stats;
+
+   LF_ROWS DEL_LF_ROWS
+---------- -----------
+         4           0
+
+we'll reuse that.
+
+So, estimating on paper how an index will grow can be extremely tricky.  You 
+through some deletes in there with the updates -- the fact that an index block 
+will be reclaimed when ALL index entries on it are marked as deleted (space is 
+reused) but won't be if one entry remains, the fact that it is a complex data 
+structure and estimation before the fact is hard.
+
+
+You can estimate the initial size of the index (search for sizing on my site) 
+using the same technique I use for sizing a table (load some representative 
+data, index it and multiply).
+
+Estimating growth is something you can do after you either really use the index 
+or simulate how you will use the index (benchmark). 
+
+-------------------------------------------------------------------------------
+
+How do I…Determine an index’s initial size parameters? 
+ 
+PROBLEM
+I am about to create an index on one of my tables and would like to know how large to make the INITIAL storage parameter. I also know that the table will eventually grow in the coming months and would like to plan accordingly so that I do not use too much or too little storage space. How do I determine an index’s initial size parameters? 
+
+Technique 
+
+In order to determine the INITIAL storage parameter of an index, you first need some basic information about the database and the index. For the calculations, you need to know the number of records in the table that the index is based upon, with a 6–12 month growth period. Also, you will need to determine the average length of all indexed columns, as well as the database block size. All of these steps are described in this How-To. 
+
+Calculating the average length of all indexed columns is similar to the process of determining the average record length when creating a table. This is explained in How-To 4.5. The difference is that the ROWID is stored within the index, and the bytes required for overhead are different. 
+
+Steps 
+
+1. Connect to the database as the WAITE user account. The first step is to determine the database block size. You can determine this by connecting to SQL*Plus and executing the CHP5_5.SQL script, as shown here. 
+
+SQL> GET CHP5_5 
+
+1 SELECT VALUE 
+
+2 FROM V$PARAMETER 
+
+3 WHERE NAME = 'db_block_size'; 
+
+SQL> / 
+
+VALUE 
+
+--------------------- 
+
+4096 
+
+1 row selected. 
+
+Within each block of size db_block_size bytes, there will be a block header, index column length, and an index value size. 
+
+2. The block header size is calculated by the formula in Figure 5.5. By default, this value is 113 bytes. 
+
+3. Now that the block header size has been determined, the available space within each block must be determined. This process is similar to the one used for tables, explained in How-To 4.5. The factors are the database block size and the PCTFREE parameter for the index. The formula for calculating the available space within each block is shown in Figure 5.6. 
+
+Within each block of size db_block_size bytes, there will be a block header, index column length, and an index value size. 
+
+2. The block header size is calculated by the formula in Figure 5.5. By default, this value is 113 bytes. 
+
+3. Now that the block header size has been determined, the available space within each block must be determined. This process is similar to the one used for tables, explained in How-To 4.5. The factors are the database block size and the PCTFREE parameter for the index. The formula for calculating the available space within each block is shown in Figure 5.6. 
+
+For example, if a block is 4096 bytes, there are 161 overhead bytes, and PCTFREE is 90; then the total available space for Oracle records is (4096-161) ¥ .9 (about 3486 bytes). 
+
+4. Now that the available space for indexes within each block has been determined, you must find out the size in bytes of an average index entry. There is no clear method to determine this before the table has data. However, do a “DESCRIBE” on the table and try to deduce the total bytes. For example, the EMPLOYEE05 table is described in Figure 5.7. 
+
+We will create an index on the SSN column. So, for an example, the SSN column can average 9 bytes. Each indexed column will need an additional byte for an internal separator. Also, the ROWID is stored along with each index entry. The Oracle8 formatted ROWID is 8 bytes. Two additional bytes for overhead are added. The formula for calculating index space for an entry is shown in Figure 5.8. In our example, the total will average 20 bytes for each index entry on SSN. 
+
+5. Now that both the available space within a block and the average size of an index entry are known, you can determine how many index records will fit within a block. This is determined by the formula in Figure 5.9. 
+
+In our example, the available space within each block was determined to be 3,486 bytes, and the average index entry length was determined to be 20 bytes. Thus, 3486/20, or about 174 index entries can fit within one block. 
+
+6. The final step to determine the INITIAL extent of the index is to determine how many total blocks the index will comprise of, and use that in the CREATE INDEX statement. The index will be the total size of all blocks. This is determined by knowing the total number of records you expect for the table (including growth over several months), the block size, and the number of records that will fit within a block. Note that the true size of the index depends on the number of records that do not contain NULL values within the indexed columns. Figure 5.10 shows the formula for determining this. 
+
+In our ongoing example, we will assume that there will be one million records. Of these, 750000 records will contain an SSN value (the other 250000 have NULL SSN values). Thus, the INITIAL extent for an index on the SSN column should be (4096 ¥ 750000)/174, or 17655172 bytes. When issuing the CREATE INDEX command, you may specify 17655172, 17242K, or 17M. 
+
+7. Just as with a table, the NEXT extent of an index determines how large an extent Oracle will obtain if the INITIAL extent is ever filled. This is an arbitrary number and will depend on how large you want to incrementally expand your table. If you do not know this, set the NEXT parameter to ten percent of the INITIAL storage parameter. 
+
+The PCTFREE parameter determines how much free space within each block will be reserved for expansion of existing records. If you do not anticipate many inserts, updates, or deletes, set the PCTFREE to a low value such as 10. If you anticipate the data within the indexed columns to grow or shrink in size, such as when adding text to an indexed text field, set the PCTFREE to a higher value such as 30 or 40. Otherwise, you will get an unbalanced index. Identifying and fixing such indexes will be described in How-To 5.4 and How-To 5.5. 
+
+How It Works 
+
+Step 1 determines the db_block_size for the database. Step 2 determines the block header size. Step 3 calculates the available space within each block. Step 4 determines the length of an average index entry. This information is used in step 5 to determine how many index records will fit within a database block. The final calculation is done in Step 6 to determine the INITIAL extent size of the index. Step 7 provides general information to determine the NEXT and PCTFREE storage parameters of an index. 
+
+Comments 
+
+When calculating the index entry size, there is usually 5% additional space for index branch information. This is insignificant unless the data length is known with certainty, in which case you should add 5% to your INITIAL extent. 
+
+It is best for performance to create the index in a tablespace other than that of the corresponding table. This will reduce disk contention.PCTUSED cannot be specified for indexes. 
+
+
+
+For further information visit
+
+http://news.dcn-asu.ru/BOOKS/Oracle8.How.To/chap5_3.html

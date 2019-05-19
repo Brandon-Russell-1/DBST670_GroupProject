@@ -1,0 +1,253 @@
+Zip 5/90
+_______
+2476K - Split in User_Data1&2
+
+Zipcode = 10 Varchar
+City = 25 Varchar
+State = 2 Char
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 5/100)
+data space = (8108 - 2*R) - (405.4 - .1*R)
+data space = 8108 - 2*R - 405.4 + .1*R
+data space = 7702.6 - 1.9*R
+
+Total Bytes = 43
+
+7702.6 - 1.9*R/ 43
+179.13 - 0.044R
+1.044R = 179.13
+R = 171.58
+ceiling(1000/172) = ceiling(6)
+6*8K blocks
+
+= 48K
+
+Customer Size 20/40
+-----
+120K - User_Data1
+
+CUSTOMERID = Integer = log(500)/Log(2)/8 = 1
+Firstname = 15 varchar
+Lastname = 15 varchar
+phoneno = 15 char
+address = 35 varchar
+zipcode 10 char
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 20/100)
+data space = (8108 - 2*R) - (1621.6 - .4*R)
+data space = 8108 - 2*R - 1621.6 + .4*R
+data space = 6486.4 - 1.6*R
+
+Total Bytes = 93
+
+6486.4 - 1.6*R/ 93
+69.74 - 0.017R
+1.017R = 69.74
+R = 68.57
+ceiling(1000/15) = ceiling(15)
+15*8K blocks
+
+= 120 Kilobytes
+
+
+Orders 5/60
+-----
+100K - User_Data1
+
+OrderID = Integer = log(500)/Log(2)/8 = 1
+CustomerId = Integer = log(500)/Log(2)/8 = 1
+Sales_emp_ssn = Integer log(199,606,147)/log(2)/8 = 4
+Order_Method = 10 char
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 5/100)
+data space = (8108 - 2*R) - (405.4 - .1*R)
+data space = 8108 - 2*R - 405.4 + .1*R
+data space = 7702.6 - 1.9*R
+
+Total Bytes = 19
+
+7702.6 - 1.9*R/ 19
+405.4 - 0.001R
+1.001R = 405.4
+R = 405
+ceiling(1000/405) = ceiling(3)
+12*8K blocks
+
+= 24K kilobytes
+
+
+Product 5/90
+----
+150K - User_Data2
+
+
+ProductId = Integer = Log(7000)/Log(2)/8 = 2
+Prod_Unit_Price = Log(80)/Log(2)/8 = 1
+Description = 150 varchar
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 5/100)
+data space = (8108 - 2*R) - (405.4 - .1*R)
+data space = 8108 - 2*R - 405.4 + .1*R
+data space = 7702.6 - 1.9*R
+
+Total Bytes = 156
+
+7702.6 - 1.9*R/ 156
+49.38 - 0.01R
+1.010R = 49.38
+R = 48.89
+ceiling(1000/49) = ceiling(21)
+12*8K blocks
+
+= 168 Kilobytes
+
+Order_Item 5/90
+------
+50K - User_Data2
+
+Orderid = Integer = log(500)/Log(2)/8 = 1
+ProductID = Integer = log(500)/Log(2)/8 = 1
+Quantity = Integer = log(2)/Log(2)/8 = 1
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 5/100)
+data space = (8108 - 2*R) - (405.4 - .1*R)
+data space = 8108 - 2*R - 405.4 + .1*R
+data space = 7702.6 - 1.9*R
+
+Total Bytes = 6
+
+7702.6 - 1.9*R/ 6
+1283.77 - 0.32R
+1.31R = 1283.77
+R = 979.98
+ceiling(1000/980) = ceiling(2)
+12*8K blocks
+
+= 16 Kilobytes
+
+Payment 20/40
+-----
+100K - User_Data 2
+
+PaymentId = Integer = log(500)/Log(2)/8 = 1
+OrderID = Integer = log(500)/Log(2)/8 = 1
+Car_Exp_Date = date = 7
+card_number = Integer = log(1851851849647260)/log(2)/8 = 7
+payment_amount = Integer = Log(80)/Log(2)/8 = 1 
+payment_method = 5 varchar
+
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 20/100)
+data space = (8108 - 2*R) - (1621.6 - .4*R)
+data space = 8108 - 2*R - 1621.6 + .4*R
+data space = 6486.4 - 1.6*R
+
+Total Bytes = 26
+
+6486.4 - 1.6*R/ 26
+249.48 - 0.06R
+1.06R = 249.48
+R = 235.36
+ceiling(1000/236) = ceiling(5)
+15*8K blocks
+
+= 40 Kilobytes
+ 
+
+Employee
+-------
+20/40...like Customer table
+Address = 35 Varchar
+Firstname = 15 Varchar
+Lastname = 15 Varchar
+PhoneNo = 15 Varchar
+Sales_emp_ssn = Integer = log(199,606,147)/log(2)/8 = 4
+storeid - Integer = avg(500) = 1
+zipcode = char 5
+---
+data space = (8108 - 2*R) - ((8108 - 2*R) * 20/100)
+data space = (8108 - 2*R) - (1621.6 - .4*R)
+data space = 8108 - 2*R - 1621.6 + .4*R
+data space = 6486.4 - 1.6*R
+
+Total Bytes = 93
+
+6486.4 - 1.6*R/ 93
+69.74 - 0.017R
+1.017R = 69.74
+R = 68.57
+ceiling(1000/15) = ceiling(15)
+15*8K blocks
+
+= 120 Kilobytes
+
+Store
+-----
+5/90
+Address = 35
+phoneno= 15
+regionid = int = avg(500) = 1
+storename =varchar 25
+zipcode = char 5
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 5/100)
+data space = (8108 - 2*R) - (405.4 - .1*R)
+data space = 8108 - 2*R - 405.4 + .1*R
+data space = 7702.6 - 1.9*R
+
+Total Bytes = 84
+
+7702.6 - 1.9*R/ 84
+91.7 - 0.022R
+1.022R = 91.7
+R = 89.72
+ceiling(1000/90) = ceiling(12)
+12*8K blocks
+
+= 96K kilobytes
+
+Region
+------
+5/90
+description = varchar 150
+regionid = int = avg(500) = 1
+regionname = vharchar 25
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 5/100)
+data space = (8108 - 2*R) - (405.4 - .1*R)
+data space = 8108 - 2*R - 405.4 + .1*R
+data space = 7702.6 - 1.9*R
+
+Total Bytes = 179
+
+7702.6 - 1.9*R/ 179
+43.03 - 0.01R
+1.010R = 43.03
+R = 42.6
+ceiling(1000/43) = ceiling(24)
+12*8K blocks
+
+= 192 Kilobytes
+
+ProdCat
+------
+5/90
+description = varchar 150
+prodcatid = int = avg(500) = 1
+prodcattype = varchar 25
+
+data space = (8108 - 2*R) - ((8108 - 2*R) * 5/100)
+data space = (8108 - 2*R) - (405.4 - .1*R)
+data space = 8108 - 2*R - 405.4 + .1*R
+data space = 7702.6 - 1.9*R
+
+Total Bytes = 179
+
+7702.6 - 1.9*R/ 179
+43.03 - 0.01R
+1.010R = 43.03
+R = 42.6
+ceiling(1000/43) = ceiling(24)
+12*8K blocks
+
+= 192 Kilobytes
